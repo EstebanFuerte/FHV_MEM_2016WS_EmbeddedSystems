@@ -1,0 +1,903 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{textcomp}
+
+\usepackage{alltt}
+    \usepackage{color}
+    \definecolor{string}{rgb}{0.7,0.0,0.0}
+    \definecolor{comment}{rgb}{0.13,0.54,0.13}
+    \definecolor{keyword}{rgb}{0.0,0.0,1.0}
+
+%\usepackage[]{mcode}
+
+% Header Footer Modification ---------------------------------------------------
+\usepackage{fancyhdr}
+\pagestyle{fancy} 
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}} % set the \leftmark
+\fancyhf{} 
+%\fancyhead[R]{MyName} % predefined ()
+ \fancyhead[L]{\leftmark} % 1. sectionname
+\fancyfoot[C]{\thepage} 
+\fancypagestyle{plain}{%   
+   \fancyhf{}%  
+   \renewcommand{\headrulewidth}{0pt}% 
+}
+
+%\usepackage[]{sty/mcode}
+%\lstset{
+%  numbers=left,
+ % stepnumber=1,
+%  numberfirstline=true
+%}
+\end_preamble
+\use_default_options true
+\begin_modules
+eqs-within-sections
+figs-within-sections
+tabs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language british
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format pdf2
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_title "Higher Mathematics II - Hausarbeiten"
+\pdf_author "Stefan Stark"
+\pdf_keywords "MEM"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 3cm
+\rightmargin 3cm
+\bottommargin 3cm
+\secnumdepth 3
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{titlepage}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+HRule}{
+\backslash
+rule{
+\backslash
+linewidth}{0.5mm}} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+center 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textsc{
+\backslash
+LARGE Fachhochschule Vorarlberg}
+\backslash
+
+\backslash
+[1.5cm] % Name of your university/college 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textsc{
+\backslash
+Large Master in Mechatronics}
+\backslash
+
+\backslash
+[0.5cm] % Major heading such as course name 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textsc{
+\backslash
+large Embedded Systems with Constrained Resources}
+\backslash
+
+\backslash
+[0.5cm] % Minor heading such as course title
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+HRule 
+\backslash
+
+\backslash
+[0.4cm] 
+\end_layout
+
+\begin_layout Plain Layout
+
+{ 
+\backslash
+huge 
+\backslash
+bfseries Microcontroller - SGL}
+\backslash
+
+\backslash
+[0.4cm] % Title of your document 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+HRule 
+\backslash
+
+\backslash
+[1.5cm]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Large 
+\backslash
+emph{Author:}
+\backslash
+
+\backslash
+Stefan 
+\backslash
+textsc{Stark}
+\backslash
+
+\backslash
+ [3cm] % Your name
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+large 
+\backslash
+today}
+\backslash
+
+\backslash
+[3cm] % Date, change the 
+\backslash
+today to a set date if you want to be %precise
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement b
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pictures/fhvLogo/Logo A3.eps
+	width 5cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vfill % Fill the rest of the page with whitespace 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{titlepage}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+SGL1: Power Saving
+\end_layout
+
+\begin_layout Subsection
+Get an overview of techniques used to reduce the power consumption of microcontr
+oller.
+\end_layout
+
+\begin_layout Subsubsection
+Operating voltage
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+uC_{powerConsumtion}\thicksim U_{supply}^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Reduce supply voltage -> lower limit for the maximum system clk -> increase
+ time in ACTIVE mode.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Active mode operation
+\end_layout
+
+\begin_layout Standard
+in active mode
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+uC_{powerConsumtion}\thicksim f_{clk}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+use lowest possible system clock frequency.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Sleep modes
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pictures/sgl1_powersavings/AvailableSleepmodesForXMEGA.png
+	lyxscale 10
+	width 15cm
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Available Sleepmodes for XMEGA
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph*
+IDLE
+\end_layout
+
+\begin_layout Itemize
+Most peripherals are still operating, only CPU core and non-volatile memories
+ (Flash and EEPROM) are stopped.
+\end_layout
+
+\begin_layout Itemize
+DMA & Event sys = active (AD conv.
+ & transfers via USART is possible)
+\end_layout
+
+\begin_layout Itemize
+Can be woken up by all interrupts
+\end_layout
+
+\begin_layout Subparagraph*
+POWER-SAVE
+\end_layout
+
+\begin_layout Itemize
+RealTimeClock is still running
+\end_layout
+
+\begin_layout Itemize
+CPU and most other peripherals are stopped.
+\end_layout
+
+\begin_layout Itemize
+RTC to wake the device up at timed intervals.
+\end_layout
+
+\begin_layout Itemize
+Wake-up takes a bit longer than for IDLE (sys clk must be stabilize before
+ operation).
+\end_layout
+
+\begin_layout Subparagraph*
+POWER-DOWN
+\end_layout
+
+\begin_layout Itemize
+deepest sleep mode
+\end_layout
+
+\begin_layout Itemize
+unable to wake itself up
+\end_layout
+
+\begin_layout Itemize
+relies on external input (asy.
+ Pin interrupts or TWI) to wake the device up.
+\end_layout
+
+\begin_layout Subparagraph*
+STANDBY
+\end_layout
+
+\begin_layout Itemize
+POWER-DOWN with sys clk still runing
+\end_layout
+
+\begin_layout Subparagraph*
+EXTENDED STANDBY
+\end_layout
+
+\begin_layout Itemize
+POWER-SAVE with sys clk still runing
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Clock Prescaling 
+\end_layout
+
+\begin_layout Itemize
+Situations (involve waiting in ACTIVE or IDLE mode for something that takes
+ a fixed amount of time, e.g.
+ serial communication) where it is better to reduce the clock rate.
+\end_layout
+
+\begin_layout Itemize
+Using clock prescaling, which can be changed without causing glitches in
+ the clock signal.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Clock Source Switching 
+\end_layout
+
+\begin_layout Itemize
+Generate a 16Mhz sys clk by use of the PLL wiah the 2MHz RC oscillator as
+ reference rather than the 32MHz RC oscillator with prescaling to 16MHz.
+\end_layout
+
+\begin_layout Itemize
+Use faster clk to go into sleep mode and wake up to reduce wake-up delay
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Wake-Up Delays 
+\end_layout
+
+\begin_layout Itemize
+Sys clk must stabilize befor the CPU starts to operate
+\end_layout
+
+\begin_layout Itemize
+-> Delay (depending on the selected clk)
+\end_layout
+
+\begin_layout Itemize
+6 cycles (internal RC oscillator or external clk) in addition to the RC
+ oscillator start-up time
+\end_layout
+
+\begin_layout Itemize
+1000 cycles for ceramic resonators
+\end_layout
+
+\begin_layout Itemize
+16000 cycles for quartz crystals
+\end_layout
+
+\begin_layout Itemize
+In addition, 13 cycle minimum delay before an ISR start executing after
+ wake-up
+\end_layout
+
+\begin_layout Itemize
+During startup - power consumption = power consumption during IDLE
+\end_layout
+
+\begin_layout Itemize
+wake up as seldom as possible
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Power Reduction Registers
+\end_layout
+
+\begin_layout Itemize
+stop internal modules and peripherals to avoid draw poer in ACTIVE mode
+ in IDLE sleep.
+\end_layout
+
+\begin_layout Itemize
+Setting the respective bits in PowerReductionRegisters
+\end_layout
+
+\begin_layout Itemize
+Disable modules and peripherals via their respective control registers before
+ setting their PRR bit.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+RTC Clock Source 
+\end_layout
+
+\begin_layout Itemize
+Minimize power consumption by clocking the RTC at 1kHz with an external
+ crystal in low power mode
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+State of Digital I/O Pins 
+\end_layout
+
+\begin_layout Itemize
+All digital I/O -> by default floating
+\end_layout
+
+\begin_layout Itemize
+sporadic internal switchin and leakage
+\end_layout
+
+\begin_layout Itemize
+diable digital input buffer (if not input)
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Virtual Port Registers
+\end_layout
+
+\begin_layout Itemize
+minimize time spent in ACTIVE mode
+\end_layout
+
+\begin_layout Itemize
+virtual port registers (allows single cycle access with I/O memory)
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+General Purpose I/O Registers
+\end_layout
+
+\begin_layout Itemize
+minimize time spent in ACTIVE mode
+\end_layout
+
+\begin_layout Itemize
+use GPIO registers for storage of variables
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Watchdog
+\end_layout
+
+\begin_layout Itemize
+timer with a separate clock source
+\end_layout
+
+\begin_layout Itemize
+use internal 32kHz ULP prescaled to 1kHz
+\end_layout
+
+\begin_layout Itemize
+disable the Watchdog
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Brown Out Detector
+\end_layout
+
+\begin_layout Itemize
+BOD ensures that device is not operating at a too low voltage
+\end_layout
+
+\begin_layout Itemize
+During sleep -> device is not operationg
+\end_layout
+
+\begin_layout Itemize
+BOD can be configured separatly
+\end_layout
+
+\begin_layout Itemize
+enable BOD only in ACTIVE and IDLE mode
+\end_layout
+
+\begin_layout Itemize
+BOD may be run in sampled mode (no voltage dips)
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+JTAG interface and On-Chip Debugging
+\end_layout
+
+\begin_layout Itemize
+JTAG IF used for programming and OnChipDebugging
+\end_layout
+
+\begin_layout Itemize
+disabled if it is not needed
+\end_layout
+
+\begin_layout Itemize
+OCD disabled in fuses
+\end_layout
+
+\begin_layout Itemize
+JTAG IF disabled in fuses and in software (disable in sw -> device can be
+ reprogrammed - JTAG IF is re-enabled upon RESET)
+\end_layout
+
+\begin_layout Itemize
+PDI IF can be used for programming and debugging
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Flash and EEPROM Power Reduction Modes
+\end_layout
+
+\begin_layout Itemize
+power reduction modes for the EEEPROM and Flash
+\end_layout
+
+\begin_layout Itemize
+EEPROM and unused section of Flash are powerd down in ACTIVE mdode
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Writing to EEPROM 
+\end_layout
+
+\begin_layout Itemize
+> 1 Byte, use of the EEPROM page buffer
+\end_layout
+
+\begin_layout Itemize
+takes just as long to write one byte as it takes to write an etire page
+ toe EEPROM
+\end_layout
+
+\begin_layout Subsection
+Identify the differences between the power-down modes available on the PSoC4.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pictures/sgl1_powersavings/PSoC 4 Power Modes.PNG
+	lyxscale 10
+	width 15cm
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+PSoC 4 - Power Modes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Understand how the watchdog module can be used to wake up the PSoC4.
+\end_layout
+
+\begin_layout Standard
+The watchdog counter can send interrupt requests to the CPU in Active power
+ mode and to the WakeUp Interrupt Controller (WIC) in Sleep and Deep-Sleep
+ power modes.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The interrupt request from the WDT is directly sent to the WIC, which will
+ then wake up the CPU.
+ The CPU acknowledges the interrupt request and executes the ISR.
+ The interrupt must be cleared after entering the ISR in firmware.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pictures/sgl1_powersavings/PSoC 4 Power Mode Transitions State Diagram.PNG
+	lyxscale 10
+	width 15cm
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+PSoC 4 - Power Mode Transitions State Diagram
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
