@@ -1,0 +1,5 @@
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|b1140129-ae5e-4ad2-ad92-826cc053d20b
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|fcfb06f7-6485-44f5-b488-b1813c00d76f
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|606de7e7-c76b-4b94-bac5-2b4860ac7ead
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|1c6e814a-d0e1-4257-9866-7359914ba679
+C:\Temp\FHV_MEM_2016WS_EmbeddedSystems\Microcontroller\PSoC\Workspace01\Design01.cydsn\Design01.cyprj|9484380b-d8d5-4e15-9011-1a47adc66988
