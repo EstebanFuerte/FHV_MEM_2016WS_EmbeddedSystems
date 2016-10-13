@@ -1,0 +1,8 @@
+C:/Temp/FHV_MEM_2016WS_EmbeddedSystems/Microcontroller/PSoC/Lab02/Lab02.cydsn/CortexM0/ARM_GCC_493/Debug/CyBootAsmGnu.o : C:/Temp/FHV_MEM_2016WS_EmbeddedSystems/Microcontroller/PSoC/Lab02/Lab02.cydsn/Generated_Source/PSoC4/CyBootAsmGnu.s C:/Temp/FHV_MEM_2016WS_EmbeddedSystems/Microcontroller/PSoC/Lab02/Lab02.cydsn/Generated_Source/PSoC4/cydevicegnu_trm.inc C:/Temp/FHV_MEM_2016WS_EmbeddedSystems/Microcontroller/PSoC/Lab02/Lab02.cydsn/Generated_Source/PSoC4/cyfittergnu.inc 
+
+C:/Temp/FHV_MEM_2016WS_EmbeddedSystems/Microcontroller/PSoC/Lab02/Lab02.cydsn/Generated_Source/PSoC4/CyBootAsmGnu.s : 
+
+C:/Temp/FHV_MEM_2016WS_EmbeddedSystems/Microcontroller/PSoC/Lab02/Lab02.cydsn/Generated_Source/PSoC4/cydevicegnu_trm.inc : 
+
+C:/Temp/FHV_MEM_2016WS_EmbeddedSystems/Microcontroller/PSoC/Lab02/Lab02.cydsn/Generated_Source/PSoC4/cyfittergnu.inc : 
+
