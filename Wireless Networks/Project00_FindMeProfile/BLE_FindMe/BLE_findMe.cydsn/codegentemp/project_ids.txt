@@ -1,0 +1,5 @@
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|3c46cca5-48b7-4074-a57b-ef447185084d
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|1205f052-2170-4d81-9633-a40cd68bdbbe
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|35c938f7-b4a8-43d4-9c97-0ce96ac89105
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|3802f6cb-2864-495b-b695-c7dd6d568be0
+C:\Temp\FHV_MEM_2016WS_EmbeddedSystems\Wireless Networks\Project00_FindMeProfile\BLE_FindMe\BLE_findMe.cydsn\BLE_findMe.cyprj|e3f2a6fc-72dc-403c-94c9-f41d33bda5fc
