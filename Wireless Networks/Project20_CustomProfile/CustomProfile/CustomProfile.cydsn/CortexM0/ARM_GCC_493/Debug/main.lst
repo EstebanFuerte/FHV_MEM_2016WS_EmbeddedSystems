@@ -1,0 +1,1277 @@
+ARM GAS  C:\Users\sst5281\AppData\Local\Temp\ccIP8Ltc.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 1
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.InitializeSystem,"ax",%progbits
+  18              		.align	2
+  19              		.global	InitializeSystem
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	InitializeSystem, %function
+  23              	InitializeSystem:
+  24              	.LFB38:
+  25              		.file 1 ".\\main.c"
+   1:.\main.c      **** /* ========================================
+   2:.\main.c      ****  *
+   3:.\main.c      ****  * Copyright YOUR COMPANY, THE YEAR
+   4:.\main.c      ****  * All Rights Reserved
+   5:.\main.c      ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\main.c      ****  *
+   7:.\main.c      ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\main.c      ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\main.c      ****  *
+  10:.\main.c      ****  * ========================================
+  11:.\main.c      **** */
+  12:.\main.c      **** #include <project.h>
+  13:.\main.c      **** #include "led.h"
+  14:.\main.c      **** #include "BLEProcess.h"
+  15:.\main.c      **** #include "main.h"
+  16:.\main.c      **** 
+  17:.\main.c      **** int main()
+  18:.\main.c      **** {
+  19:.\main.c      ****     InitializeSystem();   
+  20:.\main.c      **** 
+  21:.\main.c      ****     for(;;)
+  22:.\main.c      ****     {
+  23:.\main.c      ****         /* Process BLE Events. This generates events in the callback function */
+  24:.\main.c      ****         CyBle_ProcessEvents();
+  25:.\main.c      ****     }
+  26:.\main.c      **** }
+  27:.\main.c      **** 
+  28:.\main.c      **** void InitializeSystem(void)
+  29:.\main.c      **** {
+  26              		.loc 1 29 0
+  27              		.cfi_startproc
+  28 0000 08B5     		push	{r3, lr}
+ARM GAS  C:\Users\sst5281\AppData\Local\Temp\ccIP8Ltc.s 			page 2
+
+
+  29              		.cfi_def_cfa_offset 8
+  30              		.cfi_offset 3, -8
+  31              		.cfi_offset 14, -4
+  30:.\main.c      ****     /* Enable Global Interrrupt Mask */
+  31:.\main.c      ****     CyGlobalIntEnable;
+  32              		.loc 1 31 0
+  33              	@ 31 ".\main.c" 1
+  34 0002 62B6     		CPSIE   i
+  35              	@ 0 "" 2
+  32:.\main.c      ****     
+  33:.\main.c      ****     /* Start BLE stack and register the event callback function. */
+  34:.\main.c      ****     CyBle_Start(GeneralEventHandler);
+  36              		.loc 1 34 0
+  37              		.code	16
+  38 0004 0C48     		ldr	r0, .L2
+  39 0006 FFF7FEFF 		bl	CyBle_Start
+  40              	.LVL0:
+  35:.\main.c      ****     
+  36:.\main.c      ****     /* Start PrISM modules for LED control */
+  37:.\main.c      ****     PrISM_1_Start();
+  41              		.loc 1 37 0
+  42 000a FFF7FEFF 		bl	PrISM_1_Start
+  43              	.LVL1:
+  38:.\main.c      ****     PrISM_2_Start();
+  44              		.loc 1 38 0
+  45 000e FFF7FEFF 		bl	PrISM_2_Start
+  46              	.LVL2:
+  39:.\main.c      ****     
+  40:.\main.c      ****     /* Switch off the RGB LEDs through PrISM modules */
+  41:.\main.c      ****     PrISM_1_WritePulse0(RGB_LED_OFF);
+  47              		.loc 1 41 0
+  48 0012 FF20     		mov	r0, #255
+  49 0014 FFF7FEFF 		bl	PrISM_1_WritePulse0
+  50              	.LVL3:
+  42:.\main.c      ****     PrISM_1_WritePulse1(RGB_LED_OFF);
+  51              		.loc 1 42 0
+  52 0018 FF20     		mov	r0, #255
+  53 001a FFF7FEFF 		bl	PrISM_1_WritePulse1
+  54              	.LVL4:
+  43:.\main.c      ****     PrISM_2_WritePulse0(RGB_LED_OFF);
+  55              		.loc 1 43 0
+  56 001e FF20     		mov	r0, #255
+  57 0020 FFF7FEFF 		bl	PrISM_2_WritePulse0
+  58              	.LVL5:
+  44:.\main.c      ****     
+  45:.\main.c      ****     /* Set Drive modes of the output pins to Strong */
+  46:.\main.c      ****     RED_SetDriveMode(RED_DM_STRONG);
+  59              		.loc 1 46 0
+  60 0024 0620     		mov	r0, #6
+  61 0026 FFF7FEFF 		bl	RED_SetDriveMode
+  62              	.LVL6:
+  47:.\main.c      ****     GREEN_SetDriveMode(GREEN_DM_STRONG);
+  63              		.loc 1 47 0
+  64 002a 0620     		mov	r0, #6
+  65 002c FFF7FEFF 		bl	GREEN_SetDriveMode
+  66              	.LVL7:
+  48:.\main.c      ****     BLUE_SetDriveMode(BLUE_DM_STRONG);
+ARM GAS  C:\Users\sst5281\AppData\Local\Temp\ccIP8Ltc.s 			page 3
+
+
+  67              		.loc 1 48 0
+  68 0030 0620     		mov	r0, #6
+  69 0032 FFF7FEFF 		bl	BLUE_SetDriveMode
+  70              	.LVL8:
+  49:.\main.c      **** }
+  71              		.loc 1 49 0
+  72              		@ sp needed
+  73 0036 08BD     		pop	{r3, pc}
+  74              	.L3:
+  75              		.align	2
+  76              	.L2:
+  77 0038 00000000 		.word	GeneralEventHandler
+  78              		.cfi_endproc
+  79              	.LFE38:
+  80              		.size	InitializeSystem, .-InitializeSystem
+  81              		.section	.text.main,"ax",%progbits
+  82              		.align	2
+  83              		.global	main
+  84              		.code	16
+  85              		.thumb_func
+  86              		.type	main, %function
+  87              	main:
+  88              	.LFB37:
+  18:.\main.c      ****     InitializeSystem();   
+  89              		.loc 1 18 0
+  90              		.cfi_startproc
+  91 0000 08B5     		push	{r3, lr}
+  92              		.cfi_def_cfa_offset 8
+  93              		.cfi_offset 3, -8
+  94              		.cfi_offset 14, -4
+  19:.\main.c      **** 
+  95              		.loc 1 19 0
+  96 0002 FFF7FEFF 		bl	InitializeSystem
+  97              	.LVL9:
+  98              	.L5:
+  24:.\main.c      ****     }
+  99              		.loc 1 24 0 discriminator 1
+ 100 0006 FFF7FEFF 		bl	CyBle_ProcessEvents
+ 101              	.LVL10:
+  25:.\main.c      **** }
+ 102              		.loc 1 25 0 discriminator 1
+ 103 000a FCE7     		b	.L5
+ 104              		.cfi_endproc
+ 105              	.LFE37:
+ 106              		.size	main, .-main
+ 107              		.text
+ 108              	.Letext0:
+ 109              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 110              		.file 3 "Generated_Source\\PSoC4/BLE_1_Stack.h"
+ 111              		.file 4 "Generated_Source\\PSoC4/BLE_1.h"
+ 112              		.file 5 "Generated_Source\\PSoC4/PrISM_1.h"
+ 113              		.file 6 "Generated_Source\\PSoC4/PrISM_2.h"
+ 114              		.file 7 "Generated_Source\\PSoC4/RED.h"
+ 115              		.file 8 "Generated_Source\\PSoC4/GREEN.h"
+ 116              		.file 9 "Generated_Source\\PSoC4/BLUE.h"
+ 117              		.section	.debug_info,"",%progbits
+ 118              	.Ldebug_info0:
+ARM GAS  C:\Users\sst5281\AppData\Local\Temp\ccIP8Ltc.s 			page 4
+
+
+ 119 0000 FC020000 		.4byte	0x2fc
+ 120 0004 0400     		.2byte	0x4
+ 121 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 122 000a 04       		.byte	0x4
+ 123 000b 01       		.uleb128 0x1
+ 124 000c 62020000 		.4byte	.LASF60
+ 125 0010 01       		.byte	0x1
+ 126 0011 BD050000 		.4byte	.LASF61
+ 127 0015 F0020000 		.4byte	.LASF62
+ 128 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 129 001d 00000000 		.4byte	0
+ 130 0021 00000000 		.4byte	.Ldebug_line0
+ 131 0025 02       		.uleb128 0x2
+ 132 0026 01       		.byte	0x1
+ 133 0027 06       		.byte	0x6
+ 134 0028 A6030000 		.4byte	.LASF0
+ 135 002c 02       		.uleb128 0x2
+ 136 002d 01       		.byte	0x1
+ 137 002e 08       		.byte	0x8
+ 138 002f 80030000 		.4byte	.LASF1
+ 139 0033 02       		.uleb128 0x2
+ 140 0034 02       		.byte	0x2
+ 141 0035 05       		.byte	0x5
+ 142 0036 9D000000 		.4byte	.LASF2
+ 143 003a 02       		.uleb128 0x2
+ 144 003b 02       		.byte	0x2
+ 145 003c 07       		.byte	0x7
+ 146 003d 4A040000 		.4byte	.LASF3
+ 147 0041 02       		.uleb128 0x2
+ 148 0042 04       		.byte	0x4
+ 149 0043 05       		.byte	0x5
+ 150 0044 01020000 		.4byte	.LASF4
+ 151 0048 02       		.uleb128 0x2
+ 152 0049 04       		.byte	0x4
+ 153 004a 07       		.byte	0x7
+ 154 004b 28050000 		.4byte	.LASF5
+ 155 004f 02       		.uleb128 0x2
+ 156 0050 08       		.byte	0x8
+ 157 0051 05       		.byte	0x5
+ 158 0052 C5010000 		.4byte	.LASF6
+ 159 0056 02       		.uleb128 0x2
+ 160 0057 08       		.byte	0x8
+ 161 0058 07       		.byte	0x7
+ 162 0059 B2030000 		.4byte	.LASF7
+ 163 005d 03       		.uleb128 0x3
+ 164 005e 04       		.byte	0x4
+ 165 005f 05       		.byte	0x5
+ 166 0060 696E7400 		.ascii	"int\000"
+ 167 0064 02       		.uleb128 0x2
+ 168 0065 04       		.byte	0x4
+ 169 0066 07       		.byte	0x7
+ 170 0067 F5030000 		.4byte	.LASF8
+ 171 006b 04       		.uleb128 0x4
+ 172 006c 70010000 		.4byte	.LASF9
+ 173 0070 02       		.byte	0x2
+ 174 0071 9801     		.2byte	0x198
+ 175 0073 2C000000 		.4byte	0x2c
+ARM GAS  C:\Users\sst5281\AppData\Local\Temp\ccIP8Ltc.s 			page 5
+
+
+ 176 0077 04       		.uleb128 0x4
+ 177 0078 21050000 		.4byte	.LASF10
+ 178 007c 02       		.byte	0x2
+ 179 007d 9A01     		.2byte	0x19a
+ 180 007f 48000000 		.4byte	0x48
+ 181 0083 02       		.uleb128 0x2
+ 182 0084 04       		.byte	0x4
+ 183 0085 04       		.byte	0x4
+ 184 0086 BF010000 		.4byte	.LASF11
+ 185 008a 02       		.uleb128 0x2
+ 186 008b 08       		.byte	0x8
+ 187 008c 04       		.byte	0x4
+ 188 008d 3A050000 		.4byte	.LASF12
+ 189 0091 02       		.uleb128 0x2
+ 190 0092 01       		.byte	0x1
+ 191 0093 08       		.byte	0x8
+ 192 0094 6E040000 		.4byte	.LASF13
+ 193 0098 02       		.uleb128 0x2
+ 194 0099 04       		.byte	0x4
+ 195 009a 07       		.byte	0x7
+ 196 009b B8000000 		.4byte	.LASF14
+ 197 009f 05       		.uleb128 0x5
+ 198 00a0 04       		.byte	0x4
+ 199 00a1 06       		.uleb128 0x6
+ 200 00a2 02       		.byte	0x2
+ 201 00a3 03       		.byte	0x3
+ 202 00a4 FF02     		.2byte	0x2ff
+ 203 00a6 71010000 		.4byte	0x171
+ 204 00aa 07       		.uleb128 0x7
+ 205 00ab C1000000 		.4byte	.LASF15
+ 206 00af 00       		.sleb128 0
+ 207 00b0 07       		.uleb128 0x7
+ 208 00b1 16010000 		.4byte	.LASF16
+ 209 00b5 01       		.sleb128 1
+ 210 00b6 07       		.uleb128 0x7
+ 211 00b7 52010000 		.4byte	.LASF17
+ 212 00bb 02       		.sleb128 2
+ 213 00bc 07       		.uleb128 0x7
+ 214 00bd BD040000 		.4byte	.LASF18
+ 215 00c1 03       		.sleb128 3
+ 216 00c2 07       		.uleb128 0x7
+ 217 00c3 9C010000 		.4byte	.LASF19
+ 218 00c7 04       		.sleb128 4
+ 219 00c8 07       		.uleb128 0x7
+ 220 00c9 34010000 		.4byte	.LASF20
+ 221 00cd 05       		.sleb128 5
+ 222 00ce 07       		.uleb128 0x7
+ 223 00cf 87040000 		.4byte	.LASF21
+ 224 00d3 06       		.sleb128 6
+ 225 00d4 07       		.uleb128 0x7
+ 226 00d5 63030000 		.4byte	.LASF22
+ 227 00d9 07       		.sleb128 7
+ 228 00da 07       		.uleb128 0x7
+ 229 00db 32020000 		.4byte	.LASF23
+ 230 00df 08       		.sleb128 8
+ 231 00e0 07       		.uleb128 0x7
+ 232 00e1 E0030000 		.4byte	.LASF24
+ARM GAS  C:\Users\sst5281\AppData\Local\Temp\ccIP8Ltc.s 			page 6
+
+
+ 233 00e5 09       		.sleb128 9
+ 234 00e6 07       		.uleb128 0x7
+ 235 00e7 5F000000 		.4byte	.LASF25
+ 236 00eb 0A       		.sleb128 10
+ 237 00ec 07       		.uleb128 0x7
+ 238 00ed D3010000 		.4byte	.LASF26
+ 239 00f1 0B       		.sleb128 11
+ 240 00f2 07       		.uleb128 0x7
+ 241 00f3 C9030000 		.4byte	.LASF27
+ 242 00f7 0C       		.sleb128 12
+ 243 00f8 07       		.uleb128 0x7
+ 244 00f9 02040000 		.4byte	.LASF28
+ 245 00fd 0D       		.sleb128 13
+ 246 00fe 07       		.uleb128 0x7
+ 247 00ff 25000000 		.4byte	.LASF29
+ 248 0103 0E       		.sleb128 14
+ 249 0104 07       		.uleb128 0x7
+ 250 0105 00000000 		.4byte	.LASF30
+ 251 0109 0F       		.sleb128 15
+ 252 010a 07       		.uleb128 0x7
+ 253 010b 39060000 		.4byte	.LASF31
+ 254 010f 10       		.sleb128 16
+ 255 0110 07       		.uleb128 0x7
+ 256 0111 79000000 		.4byte	.LASF32
+ 257 0115 11       		.sleb128 17
+ 258 0116 07       		.uleb128 0x7
+ 259 0117 7D050000 		.4byte	.LASF33
+ 260 011b 12       		.sleb128 18
+ 261 011c 07       		.uleb128 0x7
+ 262 011d 41050000 		.4byte	.LASF34
+ 263 0121 13       		.sleb128 19
+ 264 0122 07       		.uleb128 0x7
+ 265 0123 DF050000 		.4byte	.LASF35
+ 266 0127 27       		.sleb128 39
+ 267 0128 07       		.uleb128 0x7
+ 268 0129 D0000000 		.4byte	.LASF36
+ 269 012d 28       		.sleb128 40
+ 270 012e 07       		.uleb128 0x7
+ 271 012f FA000000 		.4byte	.LASF37
+ 272 0133 29       		.sleb128 41
+ 273 0134 07       		.uleb128 0x7
+ 274 0135 A0050000 		.4byte	.LASF38
+ 275 0139 2A       		.sleb128 42
+ 276 013a 07       		.uleb128 0x7
+ 277 013b E2040000 		.4byte	.LASF39
+ 278 013f 2B       		.sleb128 43
+ 279 0140 07       		.uleb128 0x7
+ 280 0141 8E030000 		.4byte	.LASF40
+ 281 0145 2C       		.sleb128 44
+ 282 0146 07       		.uleb128 0x7
+ 283 0147 A1040000 		.4byte	.LASF41
+ 284 014b FE01     		.sleb128 254
+ 285 014d 07       		.uleb128 0x7
+ 286 014e 01060000 		.4byte	.LASF42
+ 287 0152 FF01     		.sleb128 255
+ 288 0154 07       		.uleb128 0x7
+ 289 0155 C6050000 		.4byte	.LASF43
+ARM GAS  C:\Users\sst5281\AppData\Local\Temp\ccIP8Ltc.s 			page 7
+
+
+ 290 0159 8002     		.sleb128 256
+ 291 015b 07       		.uleb128 0x7
+ 292 015c 67060000 		.4byte	.LASF44
+ 293 0160 8102     		.sleb128 257
+ 294 0162 07       		.uleb128 0x7
+ 295 0163 27040000 		.4byte	.LASF45
+ 296 0167 8202     		.sleb128 258
+ 297 0169 07       		.uleb128 0x7
+ 298 016a 11060000 		.4byte	.LASF46
+ 299 016e 8302     		.sleb128 259
+ 300 0170 00       		.byte	0
+ 301 0171 04       		.uleb128 0x4
+ 302 0172 76010000 		.4byte	.LASF47
+ 303 0176 03       		.byte	0x3
+ 304 0177 6B03     		.2byte	0x36b
+ 305 0179 A1000000 		.4byte	0xa1
+ 306 017d 04       		.uleb128 0x4
+ 307 017e 4E000000 		.4byte	.LASF48
+ 308 0182 04       		.byte	0x4
+ 309 0183 E601     		.2byte	0x1e6
+ 310 0185 89010000 		.4byte	0x189
+ 311 0189 08       		.uleb128 0x8
+ 312 018a 04       		.byte	0x4
+ 313 018b 8F010000 		.4byte	0x18f
+ 314 018f 09       		.uleb128 0x9
+ 315 0190 9F010000 		.4byte	0x19f
+ 316 0194 0A       		.uleb128 0xa
+ 317 0195 77000000 		.4byte	0x77
+ 318 0199 0A       		.uleb128 0xa
+ 319 019a 9F000000 		.4byte	0x9f
+ 320 019e 00       		.byte	0
+ 321 019f 0B       		.uleb128 0xb
+ 322 01a0 5D040000 		.4byte	.LASF49
+ 323 01a4 01       		.byte	0x1
+ 324 01a5 1C       		.byte	0x1c
+ 325 01a6 00000000 		.4byte	.LFB38
+ 326 01aa 3C000000 		.4byte	.LFE38-.LFB38
+ 327 01ae 01       		.uleb128 0x1
+ 328 01af 9C       		.byte	0x9c
+ 329 01b0 41020000 		.4byte	0x241
+ 330 01b4 0C       		.uleb128 0xc
+ 331 01b5 0A000000 		.4byte	.LVL0
+ 332 01b9 6D020000 		.4byte	0x26d
+ 333 01bd 0C       		.uleb128 0xc
+ 334 01be 0E000000 		.4byte	.LVL1
+ 335 01c2 83020000 		.4byte	0x283
+ 336 01c6 0C       		.uleb128 0xc
+ 337 01c7 12000000 		.4byte	.LVL2
+ 338 01cb 8A020000 		.4byte	0x28a
+ 339 01cf 0D       		.uleb128 0xd
+ 340 01d0 18000000 		.4byte	.LVL3
+ 341 01d4 91020000 		.4byte	0x291
+ 342 01d8 E3010000 		.4byte	0x1e3
+ 343 01dc 0E       		.uleb128 0xe
+ 344 01dd 01       		.uleb128 0x1
+ 345 01de 50       		.byte	0x50
+ 346 01df 02       		.uleb128 0x2
+ARM GAS  C:\Users\sst5281\AppData\Local\Temp\ccIP8Ltc.s 			page 8
+
+
+ 347 01e0 09       		.byte	0x9
+ 348 01e1 FF       		.byte	0xff
+ 349 01e2 00       		.byte	0
+ 350 01e3 0D       		.uleb128 0xd
+ 351 01e4 1E000000 		.4byte	.LVL4
+ 352 01e8 A2020000 		.4byte	0x2a2
+ 353 01ec F7010000 		.4byte	0x1f7
+ 354 01f0 0E       		.uleb128 0xe
+ 355 01f1 01       		.uleb128 0x1
+ 356 01f2 50       		.byte	0x50
+ 357 01f3 02       		.uleb128 0x2
+ 358 01f4 09       		.byte	0x9
+ 359 01f5 FF       		.byte	0xff
+ 360 01f6 00       		.byte	0
+ 361 01f7 0D       		.uleb128 0xd
+ 362 01f8 24000000 		.4byte	.LVL5
+ 363 01fc B3020000 		.4byte	0x2b3
+ 364 0200 0B020000 		.4byte	0x20b
+ 365 0204 0E       		.uleb128 0xe
+ 366 0205 01       		.uleb128 0x1
+ 367 0206 50       		.byte	0x50
+ 368 0207 02       		.uleb128 0x2
+ 369 0208 09       		.byte	0x9
+ 370 0209 FF       		.byte	0xff
+ 371 020a 00       		.byte	0
+ 372 020b 0D       		.uleb128 0xd
+ 373 020c 2A000000 		.4byte	.LVL6
+ 374 0210 C4020000 		.4byte	0x2c4
+ 375 0214 1E020000 		.4byte	0x21e
+ 376 0218 0E       		.uleb128 0xe
+ 377 0219 01       		.uleb128 0x1
+ 378 021a 50       		.byte	0x50
+ 379 021b 01       		.uleb128 0x1
+ 380 021c 36       		.byte	0x36
+ 381 021d 00       		.byte	0
+ 382 021e 0D       		.uleb128 0xd
+ 383 021f 30000000 		.4byte	.LVL7
+ 384 0223 D5020000 		.4byte	0x2d5
+ 385 0227 31020000 		.4byte	0x231
+ 386 022b 0E       		.uleb128 0xe
+ 387 022c 01       		.uleb128 0x1
+ 388 022d 50       		.byte	0x50
+ 389 022e 01       		.uleb128 0x1
+ 390 022f 36       		.byte	0x36
+ 391 0230 00       		.byte	0
+ 392 0231 0F       		.uleb128 0xf
+ 393 0232 36000000 		.4byte	.LVL8
+ 394 0236 E6020000 		.4byte	0x2e6
+ 395 023a 0E       		.uleb128 0xe
+ 396 023b 01       		.uleb128 0x1
+ 397 023c 50       		.byte	0x50
+ 398 023d 01       		.uleb128 0x1
+ 399 023e 36       		.byte	0x36
+ 400 023f 00       		.byte	0
+ 401 0240 00       		.byte	0
+ 402 0241 10       		.uleb128 0x10
+ 403 0242 F5000000 		.4byte	.LASF50
+ARM GAS  C:\Users\sst5281\AppData\Local\Temp\ccIP8Ltc.s 			page 9
+
+
+ 404 0246 01       		.byte	0x1
+ 405 0247 11       		.byte	0x11
+ 406 0248 5D000000 		.4byte	0x5d
+ 407 024c 00000000 		.4byte	.LFB37
+ 408 0250 0C000000 		.4byte	.LFE37-.LFB37
+ 409 0254 01       		.uleb128 0x1
+ 410 0255 9C       		.byte	0x9c
+ 411 0256 6D020000 		.4byte	0x26d
+ 412 025a 0C       		.uleb128 0xc
+ 413 025b 06000000 		.4byte	.LVL9
+ 414 025f 9F010000 		.4byte	0x19f
+ 415 0263 0C       		.uleb128 0xc
+ 416 0264 0A000000 		.4byte	.LVL10
+ 417 0268 F7020000 		.4byte	0x2f7
+ 418 026c 00       		.byte	0
+ 419 026d 11       		.uleb128 0x11
+ 420 026e 15050000 		.4byte	.LASF63
+ 421 0272 04       		.byte	0x4
+ 422 0273 5302     		.2byte	0x253
+ 423 0275 71010000 		.4byte	0x171
+ 424 0279 83020000 		.4byte	0x283
+ 425 027d 0A       		.uleb128 0xa
+ 426 027e 7D010000 		.4byte	0x17d
+ 427 0282 00       		.byte	0
+ 428 0283 12       		.uleb128 0x12
+ 429 0284 F3010000 		.4byte	.LASF51
+ 430 0288 05       		.byte	0x5
+ 431 0289 47       		.byte	0x47
+ 432 028a 12       		.uleb128 0x12
+ 433 028b 2B060000 		.4byte	.LASF52
+ 434 028f 06       		.byte	0x6
+ 435 0290 47       		.byte	0x47
+ 436 0291 13       		.uleb128 0x13
+ 437 0292 0A020000 		.4byte	.LASF53
+ 438 0296 05       		.byte	0x5
+ 439 0297 51       		.byte	0x51
+ 440 0298 A2020000 		.4byte	0x2a2
+ 441 029c 0A       		.uleb128 0xa
+ 442 029d 6B000000 		.4byte	0x6b
+ 443 02a1 00       		.byte	0
+ 444 02a2 13       		.uleb128 0x13
+ 445 02a3 1E020000 		.4byte	.LASF54
+ 446 02a7 05       		.byte	0x5
+ 447 02a8 54       		.byte	0x54
+ 448 02a9 B3020000 		.4byte	0x2b3
+ 449 02ad 0A       		.uleb128 0xa
+ 450 02ae 6B000000 		.4byte	0x6b
+ 451 02b2 00       		.byte	0
+ 452 02b3 13       		.uleb128 0x13
+ 453 02b4 73040000 		.4byte	.LASF55
+ 454 02b8 06       		.byte	0x6
+ 455 02b9 51       		.byte	0x51
+ 456 02ba C4020000 		.4byte	0x2c4
+ 457 02be 0A       		.uleb128 0xa
+ 458 02bf 6B000000 		.4byte	0x6b
+ 459 02c3 00       		.byte	0
+ 460 02c4 13       		.uleb128 0x13
+ARM GAS  C:\Users\sst5281\AppData\Local\Temp\ccIP8Ltc.s 			page 10
+
+
+ 461 02c5 A7000000 		.4byte	.LASF56
+ 462 02c9 07       		.byte	0x7
+ 463 02ca 36       		.byte	0x36
+ 464 02cb D5020000 		.4byte	0x2d5
+ 465 02cf 0A       		.uleb128 0xa
+ 466 02d0 6B000000 		.4byte	0x6b
+ 467 02d4 00       		.byte	0
+ 468 02d5 13       		.uleb128 0x13
+ 469 02d6 89010000 		.4byte	.LASF57
+ 470 02da 08       		.byte	0x8
+ 471 02db 36       		.byte	0x36
+ 472 02dc E6020000 		.4byte	0x2e6
+ 473 02e0 0A       		.uleb128 0xa
+ 474 02e1 6B000000 		.4byte	0x6b
+ 475 02e5 00       		.byte	0
+ 476 02e6 13       		.uleb128 0x13
+ 477 02e7 50020000 		.4byte	.LASF58
+ 478 02eb 09       		.byte	0x9
+ 479 02ec 36       		.byte	0x36
+ 480 02ed F7020000 		.4byte	0x2f7
+ 481 02f1 0A       		.uleb128 0xa
+ 482 02f2 6B000000 		.4byte	0x6b
+ 483 02f6 00       		.byte	0
+ 484 02f7 14       		.uleb128 0x14
+ 485 02f8 69050000 		.4byte	.LASF59
+ 486 02fc 03       		.byte	0x3
+ 487 02fd 4C06     		.2byte	0x64c
+ 488 02ff 00       		.byte	0
+ 489              		.section	.debug_abbrev,"",%progbits
+ 490              	.Ldebug_abbrev0:
+ 491 0000 01       		.uleb128 0x1
+ 492 0001 11       		.uleb128 0x11
+ 493 0002 01       		.byte	0x1
+ 494 0003 25       		.uleb128 0x25
+ 495 0004 0E       		.uleb128 0xe
+ 496 0005 13       		.uleb128 0x13
+ 497 0006 0B       		.uleb128 0xb
+ 498 0007 03       		.uleb128 0x3
+ 499 0008 0E       		.uleb128 0xe
+ 500 0009 1B       		.uleb128 0x1b
+ 501 000a 0E       		.uleb128 0xe
+ 502 000b 55       		.uleb128 0x55
+ 503 000c 17       		.uleb128 0x17
+ 504 000d 11       		.uleb128 0x11
+ 505 000e 01       		.uleb128 0x1
+ 506 000f 10       		.uleb128 0x10
+ 507 0010 17       		.uleb128 0x17
+ 508 0011 00       		.byte	0
+ 509 0012 00       		.byte	0
+ 510 0013 02       		.uleb128 0x2
+ 511 0014 24       		.uleb128 0x24
+ 512 0015 00       		.byte	0
+ 513 0016 0B       		.uleb128 0xb
+ 514 0017 0B       		.uleb128 0xb
+ 515 0018 3E       		.uleb128 0x3e
+ 516 0019 0B       		.uleb128 0xb
+ 517 001a 03       		.uleb128 0x3
+ARM GAS  C:\Users\sst5281\AppData\Local\Temp\ccIP8Ltc.s 			page 11
+
+
+ 518 001b 0E       		.uleb128 0xe
+ 519 001c 00       		.byte	0
+ 520 001d 00       		.byte	0
+ 521 001e 03       		.uleb128 0x3
+ 522 001f 24       		.uleb128 0x24
+ 523 0020 00       		.byte	0
+ 524 0021 0B       		.uleb128 0xb
+ 525 0022 0B       		.uleb128 0xb
+ 526 0023 3E       		.uleb128 0x3e
+ 527 0024 0B       		.uleb128 0xb
+ 528 0025 03       		.uleb128 0x3
+ 529 0026 08       		.uleb128 0x8
+ 530 0027 00       		.byte	0
+ 531 0028 00       		.byte	0
+ 532 0029 04       		.uleb128 0x4
+ 533 002a 16       		.uleb128 0x16
+ 534 002b 00       		.byte	0
+ 535 002c 03       		.uleb128 0x3
+ 536 002d 0E       		.uleb128 0xe
+ 537 002e 3A       		.uleb128 0x3a
+ 538 002f 0B       		.uleb128 0xb
+ 539 0030 3B       		.uleb128 0x3b
+ 540 0031 05       		.uleb128 0x5
+ 541 0032 49       		.uleb128 0x49
+ 542 0033 13       		.uleb128 0x13
+ 543 0034 00       		.byte	0
+ 544 0035 00       		.byte	0
+ 545 0036 05       		.uleb128 0x5
+ 546 0037 0F       		.uleb128 0xf
+ 547 0038 00       		.byte	0
+ 548 0039 0B       		.uleb128 0xb
+ 549 003a 0B       		.uleb128 0xb
+ 550 003b 00       		.byte	0
+ 551 003c 00       		.byte	0
+ 552 003d 06       		.uleb128 0x6
+ 553 003e 04       		.uleb128 0x4
+ 554 003f 01       		.byte	0x1
+ 555 0040 0B       		.uleb128 0xb
+ 556 0041 0B       		.uleb128 0xb
+ 557 0042 3A       		.uleb128 0x3a
+ 558 0043 0B       		.uleb128 0xb
+ 559 0044 3B       		.uleb128 0x3b
+ 560 0045 05       		.uleb128 0x5
+ 561 0046 01       		.uleb128 0x1
+ 562 0047 13       		.uleb128 0x13
+ 563 0048 00       		.byte	0
+ 564 0049 00       		.byte	0
+ 565 004a 07       		.uleb128 0x7
+ 566 004b 28       		.uleb128 0x28
+ 567 004c 00       		.byte	0
+ 568 004d 03       		.uleb128 0x3
+ 569 004e 0E       		.uleb128 0xe
+ 570 004f 1C       		.uleb128 0x1c
+ 571 0050 0D       		.uleb128 0xd
+ 572 0051 00       		.byte	0
+ 573 0052 00       		.byte	0
+ 574 0053 08       		.uleb128 0x8
+ARM GAS  C:\Users\sst5281\AppData\Local\Temp\ccIP8Ltc.s 			page 12
+
+
+ 575 0054 0F       		.uleb128 0xf
+ 576 0055 00       		.byte	0
+ 577 0056 0B       		.uleb128 0xb
+ 578 0057 0B       		.uleb128 0xb
+ 579 0058 49       		.uleb128 0x49
+ 580 0059 13       		.uleb128 0x13
+ 581 005a 00       		.byte	0
+ 582 005b 00       		.byte	0
+ 583 005c 09       		.uleb128 0x9
+ 584 005d 15       		.uleb128 0x15
+ 585 005e 01       		.byte	0x1
+ 586 005f 27       		.uleb128 0x27
+ 587 0060 19       		.uleb128 0x19
+ 588 0061 01       		.uleb128 0x1
+ 589 0062 13       		.uleb128 0x13
+ 590 0063 00       		.byte	0
+ 591 0064 00       		.byte	0
+ 592 0065 0A       		.uleb128 0xa
+ 593 0066 05       		.uleb128 0x5
+ 594 0067 00       		.byte	0
+ 595 0068 49       		.uleb128 0x49
+ 596 0069 13       		.uleb128 0x13
+ 597 006a 00       		.byte	0
+ 598 006b 00       		.byte	0
+ 599 006c 0B       		.uleb128 0xb
+ 600 006d 2E       		.uleb128 0x2e
+ 601 006e 01       		.byte	0x1
+ 602 006f 3F       		.uleb128 0x3f
+ 603 0070 19       		.uleb128 0x19
+ 604 0071 03       		.uleb128 0x3
+ 605 0072 0E       		.uleb128 0xe
+ 606 0073 3A       		.uleb128 0x3a
+ 607 0074 0B       		.uleb128 0xb
+ 608 0075 3B       		.uleb128 0x3b
+ 609 0076 0B       		.uleb128 0xb
+ 610 0077 27       		.uleb128 0x27
+ 611 0078 19       		.uleb128 0x19
+ 612 0079 11       		.uleb128 0x11
+ 613 007a 01       		.uleb128 0x1
+ 614 007b 12       		.uleb128 0x12
+ 615 007c 06       		.uleb128 0x6
+ 616 007d 40       		.uleb128 0x40
+ 617 007e 18       		.uleb128 0x18
+ 618 007f 9742     		.uleb128 0x2117
+ 619 0081 19       		.uleb128 0x19
+ 620 0082 01       		.uleb128 0x1
+ 621 0083 13       		.uleb128 0x13
+ 622 0084 00       		.byte	0
+ 623 0085 00       		.byte	0
+ 624 0086 0C       		.uleb128 0xc
+ 625 0087 898201   		.uleb128 0x4109
+ 626 008a 00       		.byte	0
+ 627 008b 11       		.uleb128 0x11
+ 628 008c 01       		.uleb128 0x1
+ 629 008d 31       		.uleb128 0x31
+ 630 008e 13       		.uleb128 0x13
+ 631 008f 00       		.byte	0
+ARM GAS  C:\Users\sst5281\AppData\Local\Temp\ccIP8Ltc.s 			page 13
+
+
+ 632 0090 00       		.byte	0
+ 633 0091 0D       		.uleb128 0xd
+ 634 0092 898201   		.uleb128 0x4109
+ 635 0095 01       		.byte	0x1
+ 636 0096 11       		.uleb128 0x11
+ 637 0097 01       		.uleb128 0x1
+ 638 0098 31       		.uleb128 0x31
+ 639 0099 13       		.uleb128 0x13
+ 640 009a 01       		.uleb128 0x1
+ 641 009b 13       		.uleb128 0x13
+ 642 009c 00       		.byte	0
+ 643 009d 00       		.byte	0
+ 644 009e 0E       		.uleb128 0xe
+ 645 009f 8A8201   		.uleb128 0x410a
+ 646 00a2 00       		.byte	0
+ 647 00a3 02       		.uleb128 0x2
+ 648 00a4 18       		.uleb128 0x18
+ 649 00a5 9142     		.uleb128 0x2111
+ 650 00a7 18       		.uleb128 0x18
+ 651 00a8 00       		.byte	0
+ 652 00a9 00       		.byte	0
+ 653 00aa 0F       		.uleb128 0xf
+ 654 00ab 898201   		.uleb128 0x4109
+ 655 00ae 01       		.byte	0x1
+ 656 00af 11       		.uleb128 0x11
+ 657 00b0 01       		.uleb128 0x1
+ 658 00b1 31       		.uleb128 0x31
+ 659 00b2 13       		.uleb128 0x13
+ 660 00b3 00       		.byte	0
+ 661 00b4 00       		.byte	0
+ 662 00b5 10       		.uleb128 0x10
+ 663 00b6 2E       		.uleb128 0x2e
+ 664 00b7 01       		.byte	0x1
+ 665 00b8 3F       		.uleb128 0x3f
+ 666 00b9 19       		.uleb128 0x19
+ 667 00ba 03       		.uleb128 0x3
+ 668 00bb 0E       		.uleb128 0xe
+ 669 00bc 3A       		.uleb128 0x3a
+ 670 00bd 0B       		.uleb128 0xb
+ 671 00be 3B       		.uleb128 0x3b
+ 672 00bf 0B       		.uleb128 0xb
+ 673 00c0 49       		.uleb128 0x49
+ 674 00c1 13       		.uleb128 0x13
+ 675 00c2 11       		.uleb128 0x11
+ 676 00c3 01       		.uleb128 0x1
+ 677 00c4 12       		.uleb128 0x12
+ 678 00c5 06       		.uleb128 0x6
+ 679 00c6 40       		.uleb128 0x40
+ 680 00c7 18       		.uleb128 0x18
+ 681 00c8 9742     		.uleb128 0x2117
+ 682 00ca 19       		.uleb128 0x19
+ 683 00cb 01       		.uleb128 0x1
+ 684 00cc 13       		.uleb128 0x13
+ 685 00cd 00       		.byte	0
+ 686 00ce 00       		.byte	0
+ 687 00cf 11       		.uleb128 0x11
+ 688 00d0 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\sst5281\AppData\Local\Temp\ccIP8Ltc.s 			page 14
+
+
+ 689 00d1 01       		.byte	0x1
+ 690 00d2 3F       		.uleb128 0x3f
+ 691 00d3 19       		.uleb128 0x19
+ 692 00d4 03       		.uleb128 0x3
+ 693 00d5 0E       		.uleb128 0xe
+ 694 00d6 3A       		.uleb128 0x3a
+ 695 00d7 0B       		.uleb128 0xb
+ 696 00d8 3B       		.uleb128 0x3b
+ 697 00d9 05       		.uleb128 0x5
+ 698 00da 27       		.uleb128 0x27
+ 699 00db 19       		.uleb128 0x19
+ 700 00dc 49       		.uleb128 0x49
+ 701 00dd 13       		.uleb128 0x13
+ 702 00de 3C       		.uleb128 0x3c
+ 703 00df 19       		.uleb128 0x19
+ 704 00e0 01       		.uleb128 0x1
+ 705 00e1 13       		.uleb128 0x13
+ 706 00e2 00       		.byte	0
+ 707 00e3 00       		.byte	0
+ 708 00e4 12       		.uleb128 0x12
+ 709 00e5 2E       		.uleb128 0x2e
+ 710 00e6 00       		.byte	0
+ 711 00e7 3F       		.uleb128 0x3f
+ 712 00e8 19       		.uleb128 0x19
+ 713 00e9 03       		.uleb128 0x3
+ 714 00ea 0E       		.uleb128 0xe
+ 715 00eb 3A       		.uleb128 0x3a
+ 716 00ec 0B       		.uleb128 0xb
+ 717 00ed 3B       		.uleb128 0x3b
+ 718 00ee 0B       		.uleb128 0xb
+ 719 00ef 27       		.uleb128 0x27
+ 720 00f0 19       		.uleb128 0x19
+ 721 00f1 3C       		.uleb128 0x3c
+ 722 00f2 19       		.uleb128 0x19
+ 723 00f3 00       		.byte	0
+ 724 00f4 00       		.byte	0
+ 725 00f5 13       		.uleb128 0x13
+ 726 00f6 2E       		.uleb128 0x2e
+ 727 00f7 01       		.byte	0x1
+ 728 00f8 3F       		.uleb128 0x3f
+ 729 00f9 19       		.uleb128 0x19
+ 730 00fa 03       		.uleb128 0x3
+ 731 00fb 0E       		.uleb128 0xe
+ 732 00fc 3A       		.uleb128 0x3a
+ 733 00fd 0B       		.uleb128 0xb
+ 734 00fe 3B       		.uleb128 0x3b
+ 735 00ff 0B       		.uleb128 0xb
+ 736 0100 27       		.uleb128 0x27
+ 737 0101 19       		.uleb128 0x19
+ 738 0102 3C       		.uleb128 0x3c
+ 739 0103 19       		.uleb128 0x19
+ 740 0104 01       		.uleb128 0x1
+ 741 0105 13       		.uleb128 0x13
+ 742 0106 00       		.byte	0
+ 743 0107 00       		.byte	0
+ 744 0108 14       		.uleb128 0x14
+ 745 0109 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\sst5281\AppData\Local\Temp\ccIP8Ltc.s 			page 15
+
+
+ 746 010a 00       		.byte	0
+ 747 010b 3F       		.uleb128 0x3f
+ 748 010c 19       		.uleb128 0x19
+ 749 010d 03       		.uleb128 0x3
+ 750 010e 0E       		.uleb128 0xe
+ 751 010f 3A       		.uleb128 0x3a
+ 752 0110 0B       		.uleb128 0xb
+ 753 0111 3B       		.uleb128 0x3b
+ 754 0112 05       		.uleb128 0x5
+ 755 0113 27       		.uleb128 0x27
+ 756 0114 19       		.uleb128 0x19
+ 757 0115 3C       		.uleb128 0x3c
+ 758 0116 19       		.uleb128 0x19
+ 759 0117 00       		.byte	0
+ 760 0118 00       		.byte	0
+ 761 0119 00       		.byte	0
+ 762              		.section	.debug_aranges,"",%progbits
+ 763 0000 24000000 		.4byte	0x24
+ 764 0004 0200     		.2byte	0x2
+ 765 0006 00000000 		.4byte	.Ldebug_info0
+ 766 000a 04       		.byte	0x4
+ 767 000b 00       		.byte	0
+ 768 000c 0000     		.2byte	0
+ 769 000e 0000     		.2byte	0
+ 770 0010 00000000 		.4byte	.LFB38
+ 771 0014 3C000000 		.4byte	.LFE38-.LFB38
+ 772 0018 00000000 		.4byte	.LFB37
+ 773 001c 0C000000 		.4byte	.LFE37-.LFB37
+ 774 0020 00000000 		.4byte	0
+ 775 0024 00000000 		.4byte	0
+ 776              		.section	.debug_ranges,"",%progbits
+ 777              	.Ldebug_ranges0:
+ 778 0000 00000000 		.4byte	.LFB38
+ 779 0004 3C000000 		.4byte	.LFE38
+ 780 0008 00000000 		.4byte	.LFB37
+ 781 000c 0C000000 		.4byte	.LFE37
+ 782 0010 00000000 		.4byte	0
+ 783 0014 00000000 		.4byte	0
+ 784              		.section	.debug_line,"",%progbits
+ 785              	.Ldebug_line0:
+ 786 0000 D1000000 		.section	.debug_str,"MS",%progbits,1
+ 786      02009700 
+ 786      00000201 
+ 786      FB0E0D00 
+ 786      01010101 
+ 787              	.LASF30:
+ 788 0000 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_PSM_NOT_REGISTERED\000"
+ 788      455F4552 
+ 788      524F525F 
+ 788      4C324341 
+ 788      505F5053 
+ 789              	.LASF29:
+ 790 0025 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_PSM_ALREADY_REGISTERED\000"
+ 790      455F4552 
+ 790      524F525F 
+ 790      4C324341 
+ 790      505F5053 
+ARM GAS  C:\Users\sst5281\AppData\Local\Temp\ccIP8Ltc.s 			page 16
+
+
+ 791              	.LASF48:
+ 792 004e 4359424C 		.ascii	"CYBLE_CALLBACK_T\000"
+ 792      455F4341 
+ 792      4C4C4241 
+ 792      434B5F54 
+ 792      00
+ 793              	.LASF25:
+ 794 005f 4359424C 		.ascii	"CYBLE_ERROR_TX_POWER_READ\000"
+ 794      455F4552 
+ 794      524F525F 
+ 794      54585F50 
+ 794      4F574552 
+ 795              	.LASF32:
+ 796 0079 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_CHANNEL_NOT_FOUND\000"
+ 796      455F4552 
+ 796      524F525F 
+ 796      4C324341 
+ 796      505F4348 
+ 797              	.LASF2:
+ 798 009d 73686F72 		.ascii	"short int\000"
+ 798      7420696E 
+ 798      7400
+ 799              	.LASF56:
+ 800 00a7 5245445F 		.ascii	"RED_SetDriveMode\000"
+ 800      53657444 
+ 800      72697665 
+ 800      4D6F6465 
+ 800      00
+ 801              	.LASF14:
+ 802 00b8 73697A65 		.ascii	"sizetype\000"
+ 802      74797065 
+ 802      00
+ 803              	.LASF15:
+ 804 00c1 4359424C 		.ascii	"CYBLE_ERROR_OK\000"
+ 804      455F4552 
+ 804      524F525F 
+ 804      4F4B00
+ 805              	.LASF36:
+ 806 00d0 4359424C 		.ascii	"CYBLE_ERROR_FLASH_WRITE_NOT_PERMITED\000"
+ 806      455F4552 
+ 806      524F525F 
+ 806      464C4153 
+ 806      485F5752 
+ 807              	.LASF50:
+ 808 00f5 6D61696E 		.ascii	"main\000"
+ 808      00
+ 809              	.LASF37:
+ 810 00fa 4359424C 		.ascii	"CYBLE_ERROR_MIC_AUTH_FAILED\000"
+ 810      455F4552 
+ 810      524F525F 
+ 810      4D49435F 
+ 810      41555448 
+ 811              	.LASF16:
+ 812 0116 4359424C 		.ascii	"CYBLE_ERROR_INVALID_PARAMETER\000"
+ 812      455F4552 
+ 812      524F525F 
+ 812      494E5641 
+ARM GAS  C:\Users\sst5281\AppData\Local\Temp\ccIP8Ltc.s 			page 17
+
+
+ 812      4C49445F 
+ 813              	.LASF20:
+ 814 0134 4359424C 		.ascii	"CYBLE_ERROR_OOB_NOT_AVAILABLE\000"
+ 814      455F4552 
+ 814      524F525F 
+ 814      4F4F425F 
+ 814      4E4F545F 
+ 815              	.LASF17:
+ 816 0152 4359424C 		.ascii	"CYBLE_ERROR_INVALID_OPERATION\000"
+ 816      455F4552 
+ 816      524F525F 
+ 816      494E5641 
+ 816      4C49445F 
+ 817              	.LASF9:
+ 818 0170 75696E74 		.ascii	"uint8\000"
+ 818      3800
+ 819              	.LASF47:
+ 820 0176 4359424C 		.ascii	"CYBLE_API_RESULT_T\000"
+ 820      455F4150 
+ 820      495F5245 
+ 820      53554C54 
+ 820      5F5400
+ 821              	.LASF57:
+ 822 0189 47524545 		.ascii	"GREEN_SetDriveMode\000"
+ 822      4E5F5365 
+ 822      74447269 
+ 822      76654D6F 
+ 822      646500
+ 823              	.LASF19:
+ 824 019c 4359424C 		.ascii	"CYBLE_ERROR_INSUFFICIENT_RESOURCES\000"
+ 824      455F4552 
+ 824      524F525F 
+ 824      494E5355 
+ 824      46464943 
+ 825              	.LASF11:
+ 826 01bf 666C6F61 		.ascii	"float\000"
+ 826      7400
+ 827              	.LASF6:
+ 828 01c5 6C6F6E67 		.ascii	"long long int\000"
+ 828      206C6F6E 
+ 828      6720696E 
+ 828      7400
+ 829              	.LASF26:
+ 830 01d3 4359424C 		.ascii	"CYBLE_ERROR_BT_ON_NOT_COMPLETED\000"
+ 830      455F4552 
+ 830      524F525F 
+ 830      42545F4F 
+ 830      4E5F4E4F 
+ 831              	.LASF51:
+ 832 01f3 50724953 		.ascii	"PrISM_1_Start\000"
+ 832      4D5F315F 
+ 832      53746172 
+ 832      7400
+ 833              	.LASF4:
+ 834 0201 6C6F6E67 		.ascii	"long int\000"
+ 834      20696E74 
+ 834      00
+ARM GAS  C:\Users\sst5281\AppData\Local\Temp\ccIP8Ltc.s 			page 18
+
+
+ 835              	.LASF53:
+ 836 020a 50724953 		.ascii	"PrISM_1_WritePulse0\000"
+ 836      4D5F315F 
+ 836      57726974 
+ 836      6550756C 
+ 836      73653000 
+ 837              	.LASF54:
+ 838 021e 50724953 		.ascii	"PrISM_1_WritePulse1\000"
+ 838      4D5F315F 
+ 838      57726974 
+ 838      6550756C 
+ 838      73653100 
+ 839              	.LASF23:
+ 840 0232 4359424C 		.ascii	"CYBLE_ERROR_REPEATED_ATTEMPTS\000"
+ 840      455F4552 
+ 840      524F525F 
+ 840      52455045 
+ 840      41544544 
+ 841              	.LASF58:
+ 842 0250 424C5545 		.ascii	"BLUE_SetDriveMode\000"
+ 842      5F536574 
+ 842      44726976 
+ 842      654D6F64 
+ 842      6500
+ 843              	.LASF60:
+ 844 0262 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 844      4320342E 
+ 844      392E3320 
+ 844      32303135 
+ 844      30333033 
+ 845 0295 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 845      20726576 
+ 845      6973696F 
+ 845      6E203232 
+ 845      31323230 
+ 846 02c8 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 846      66756E63 
+ 846      74696F6E 
+ 846      2D736563 
+ 846      74696F6E 
+ 847              	.LASF62:
+ 848 02f0 433A5C54 		.ascii	"C:\\Temp\\FHV_MEM_2016WS_EmbeddedSystems\\Wireless "
+ 848      656D705C 
+ 848      4648565F 
+ 848      4D454D5F 
+ 848      32303136 
+ 849 0320 4E657477 		.ascii	"Networks\\Project20_CustomProfile\\CustomProfile\\C"
+ 849      6F726B73 
+ 849      5C50726F 
+ 849      6A656374 
+ 849      32305F43 
+ 850 0350 7573746F 		.ascii	"ustomProfile.cydsn\000"
+ 850      6D50726F 
+ 850      66696C65 
+ 850      2E637964 
+ 850      736E00
+ 851              	.LASF22:
+ARM GAS  C:\Users\sst5281\AppData\Local\Temp\ccIP8Ltc.s 			page 19
+
+
+ 852 0363 4359424C 		.ascii	"CYBLE_ERROR_NO_DEVICE_ENTITY\000"
+ 852      455F4552 
+ 852      524F525F 
+ 852      4E4F5F44 
+ 852      45564943 
+ 853              	.LASF1:
+ 854 0380 756E7369 		.ascii	"unsigned char\000"
+ 854      676E6564 
+ 854      20636861 
+ 854      7200
+ 855              	.LASF40:
+ 856 038e 4359424C 		.ascii	"CYBLE_ERROR_FLASH_WRITE\000"
+ 856      455F4552 
+ 856      524F525F 
+ 856      464C4153 
+ 856      485F5752 
+ 857              	.LASF0:
+ 858 03a6 7369676E 		.ascii	"signed char\000"
+ 858      65642063 
+ 858      68617200 
+ 859              	.LASF7:
+ 860 03b2 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 860      206C6F6E 
+ 860      6720756E 
+ 860      7369676E 
+ 860      65642069 
+ 861              	.LASF27:
+ 862 03c9 4359424C 		.ascii	"CYBLE_ERROR_SEC_FAILED\000"
+ 862      455F4552 
+ 862      524F525F 
+ 862      5345435F 
+ 862      4641494C 
+ 863              	.LASF24:
+ 864 03e0 4359424C 		.ascii	"CYBLE_ERROR_GAP_ROLE\000"
+ 864      455F4552 
+ 864      524F525F 
+ 864      4741505F 
+ 864      524F4C45 
+ 865              	.LASF8:
+ 866 03f5 756E7369 		.ascii	"unsigned int\000"
+ 866      676E6564 
+ 866      20696E74 
+ 866      00
+ 867              	.LASF28:
+ 868 0402 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_PSM_WRONG_ENCODING\000"
+ 868      455F4552 
+ 868      524F525F 
+ 868      4C324341 
+ 868      505F5053 
+ 869              	.LASF45:
+ 870 0427 4359424C 		.ascii	"CYBLE_ERROR_CHAR_IS_NOT_DISCOVERED\000"
+ 870      455F4552 
+ 870      524F525F 
+ 870      43484152 
+ 870      5F49535F 
+ 871              	.LASF3:
+ 872 044a 73686F72 		.ascii	"short unsigned int\000"
+ARM GAS  C:\Users\sst5281\AppData\Local\Temp\ccIP8Ltc.s 			page 20
+
+
+ 872      7420756E 
+ 872      7369676E 
+ 872      65642069 
+ 872      6E7400
+ 873              	.LASF49:
+ 874 045d 496E6974 		.ascii	"InitializeSystem\000"
+ 874      69616C69 
+ 874      7A655379 
+ 874      7374656D 
+ 874      00
+ 875              	.LASF13:
+ 876 046e 63686172 		.ascii	"char\000"
+ 876      00
+ 877              	.LASF55:
+ 878 0473 50724953 		.ascii	"PrISM_2_WritePulse0\000"
+ 878      4D5F325F 
+ 878      57726974 
+ 878      6550756C 
+ 878      73653000 
+ 879              	.LASF21:
+ 880 0487 4359424C 		.ascii	"CYBLE_ERROR_NO_CONNECTION\000"
+ 880      455F4552 
+ 880      524F525F 
+ 880      4E4F5F43 
+ 880      4F4E4E45 
+ 881              	.LASF41:
+ 882 04a1 4359424C 		.ascii	"CYBLE_ERROR_CONTROLLER_BUSY\000"
+ 882      455F4552 
+ 882      524F525F 
+ 882      434F4E54 
+ 882      524F4C4C 
+ 883              	.LASF18:
+ 884 04bd 4359424C 		.ascii	"CYBLE_ERROR_MEMORY_ALLOCATION_FAILED\000"
+ 884      455F4552 
+ 884      524F525F 
+ 884      4D454D4F 
+ 884      52595F41 
+ 885              	.LASF39:
+ 886 04e2 4359424C 		.ascii	"CYBLE_ERROR_UNSUPPORTED_FEATURE_OR_PARAMETER_VALUE\000"
+ 886      455F4552 
+ 886      524F525F 
+ 886      554E5355 
+ 886      50504F52 
+ 887              	.LASF63:
+ 888 0515 4379426C 		.ascii	"CyBle_Start\000"
+ 888      655F5374 
+ 888      61727400 
+ 889              	.LASF10:
+ 890 0521 75696E74 		.ascii	"uint32\000"
+ 890      333200
+ 891              	.LASF5:
+ 892 0528 6C6F6E67 		.ascii	"long unsigned int\000"
+ 892      20756E73 
+ 892      69676E65 
+ 892      6420696E 
+ 892      7400
+ 893              	.LASF12:
+ARM GAS  C:\Users\sst5281\AppData\Local\Temp\ccIP8Ltc.s 			page 21
+
+
+ 894 053a 646F7562 		.ascii	"double\000"
+ 894      6C6500
+ 895              	.LASF34:
+ 896 0541 4359424C 		.ascii	"CYBLE_ERROR_GATT_DB_INVALID_ATTR_HANDLE\000"
+ 896      455F4552 
+ 896      524F525F 
+ 896      47415454 
+ 896      5F44425F 
+ 897              	.LASF59:
+ 898 0569 4379426C 		.ascii	"CyBle_ProcessEvents\000"
+ 898      655F5072 
+ 898      6F636573 
+ 898      73457665 
+ 898      6E747300 
+ 899              	.LASF33:
+ 900 057d 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_PSM_NOT_IN_RANGE\000"
+ 900      455F4552 
+ 900      524F525F 
+ 900      4C324341 
+ 900      505F5053 
+ 901              	.LASF38:
+ 902 05a0 4359424C 		.ascii	"CYBLE_ERROR_HARDWARE_FAILURE\000"
+ 902      455F4552 
+ 902      524F525F 
+ 902      48415244 
+ 902      57415245 
+ 903              	.LASF61:
+ 904 05bd 2E5C6D61 		.ascii	".\\main.c\000"
+ 904      696E2E63 
+ 904      00
+ 905              	.LASF43:
+ 906 05c6 4359424C 		.ascii	"CYBLE_ERROR_NTF_DISABLED\000"
+ 906      455F4552 
+ 906      524F525F 
+ 906      4E54465F 
+ 906      44495341 
+ 907              	.LASF35:
+ 908 05df 4359424C 		.ascii	"CYBLE_ERROR_DEVICE_ALREADY_EXISTS\000"
+ 908      455F4552 
+ 908      524F525F 
+ 908      44455649 
+ 908      43455F41 
+ 909              	.LASF42:
+ 910 0601 4359424C 		.ascii	"CYBLE_ERROR_MAX\000"
+ 910      455F4552 
+ 910      524F525F 
+ 910      4D415800 
+ 911              	.LASF46:
+ 912 0611 4359424C 		.ascii	"CYBLE_ERROR_INVALID_STATE\000"
+ 912      455F4552 
+ 912      524F525F 
+ 912      494E5641 
+ 912      4C49445F 
+ 913              	.LASF52:
+ 914 062b 50724953 		.ascii	"PrISM_2_Start\000"
+ 914      4D5F325F 
+ 914      53746172 
+ARM GAS  C:\Users\sst5281\AppData\Local\Temp\ccIP8Ltc.s 			page 22
+
+
+ 914      7400
+ 915              	.LASF31:
+ 916 0639 4359424C 		.ascii	"CYBLE_ERROR_L2CAP_CONNECTION_ENTITY_NOT_FOUND\000"
+ 916      455F4552 
+ 916      524F525F 
+ 916      4C324341 
+ 916      505F434F 
+ 917              	.LASF44:
+ 918 0667 4359424C 		.ascii	"CYBLE_ERROR_IND_DISABLED\000"
+ 918      455F4552 
+ 918      524F525F 
+ 918      494E445F 
+ 918      44495341 
+ 919              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

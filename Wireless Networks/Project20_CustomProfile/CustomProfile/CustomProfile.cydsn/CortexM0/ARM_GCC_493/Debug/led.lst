@@ -1,0 +1,59 @@
+ARM GAS  C:\Users\sst5281\AppData\Local\Temp\ccJBD81n.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 1
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"led.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              	.Letext0:
+  18              		.section	.debug_line,"",%progbits
+  19              	.Ldebug_line0:
+  20              		.section	.debug_str,"MS",%progbits,1
+  21              	.LASF0:
+  22 0000 433A5C54 		.ascii	"C:\\Temp\\FHV_MEM_2016WS_EmbeddedSystems\\Wireless "
+  22      656D705C 
+  22      4648565F 
+  22      4D454D5F 
+  22      32303136 
+  23 0030 4E657477 		.ascii	"Networks\\Project20_CustomProfile\\CustomProfile\\C"
+  23      6F726B73 
+  23      5C50726F 
+  23      6A656374 
+  23      32305F43 
+  24 0060 7573746F 		.ascii	"ustomProfile.cydsn\000"
+  24      6D50726F 
+  24      66696C65 
+  24      2E637964 
+  24      736E00
+  25              	.LASF1:
+  26 0073 2E5C6C65 		.ascii	".\\led.c\000"
+  26      642E6300 
+  27              	.LASF2:
+  28 007b 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+  28      4320342E 
+  28      392E3320 
+  28      32303135 
+  28      30333033 
+  29 00ae 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+  29      20726576 
+  29      6973696F 
+  29      6E203232 
+  29      31323230 
+  30 00e1 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+  30      66756E63 
+  30      74696F6E 
+  30      2D736563 
+  30      74696F6E 
+  31              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
