@@ -1,0 +1,5 @@
+C:\Temp\FHV_MEM_2016WS_EmbeddedSystems\Wireless Networks\Project20_CustomProfile\CustomProfile\CustomProfile.cydsn\CustomProfile.cyprj|fe3c7521-a0df-46fa-a375-bd7f648f2ca8
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|f1665a44-55b0-4cd6-850d-3d53531d8109
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|f64d1392-42f9-4b99-b893-214a1cf71a56
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|60d971ea-0109-4724-8e7b-6e4e800d2816
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|e4aed894-fbce-4d32-b4ae-b07998890810
