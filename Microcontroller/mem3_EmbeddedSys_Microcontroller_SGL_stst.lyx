@@ -1228,6 +1228,78 @@ Timing Diagram for Pseudo-Random PWM
 \begin_layout Itemize
 line out = 1 when lower 15-bit of counter register is smaller than 16 bit
  compare register
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+SGL3: Memory Test
+\end_layout
+
+\begin_layout Subsection
+What are the differences between checksums and CRC (cyclic redundancy check)
+ polynomials to verify the integrity of a non-volatile memory?
+\end_layout
+
+\begin_layout Itemize
+CRC uses polynomial division instead of easy addition, that’s why it is
+ more effective by recognizing random errors
+\end_layout
+
+\begin_layout Itemize
+Both methods are not save against intended data modifications (manipulation)
+\end_layout
+
+\begin_layout Itemize
+Better methods are cryptographic algorithms like Hash-functions (electronic
+ signature)
+\end_layout
+
+\begin_layout Subsection
+Which are the basic algorithms used for testing volatile memory? 
+\end_layout
+
+\begin_layout Itemize
+Classical Test Algorithms (Zero-one, Checkerboard, Walking 1/0)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+simple, fast but have poor falut coverage (Zero-one, Checkerboard) 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+OR
+\series default
+ good fault coverage but complex and slow (Walking, GALPAT...)
+\end_layout
+
+\begin_layout Itemize
+Locate / Locate some
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+March-based Test Algorithms (MATS, MATS+)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+finite sequence of March Elements, a March element is specified by an adress
+ order number of reads and writes.
+\end_layout
+
+\begin_layout Itemize
+Detect / Detect some
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+What are their pros and cons in an embedded system power-up sequence?
 \end_layout
 
 \end_body
