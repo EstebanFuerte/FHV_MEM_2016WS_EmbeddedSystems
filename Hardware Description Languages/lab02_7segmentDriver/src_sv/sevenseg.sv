@@ -1,14 +1,14 @@
 // ------------------------------------------
 // Project:		Implement a 7 segment decoder
 // Author:		Stefan Stark
-// Date:		15.12.2016
+// Date:			15.12.2016
 // ------------------------------------------
 
 module sevenseg(
 	// Define the inputs and outputs of the module
 	input 	logic	[3:0]	bin,
 	output 	logic	[6:0]	sevenseg,	
-	output 	logic 	[6:0]	sevenseg_n
+	output 	logic	[6:0]	sevenseg_n
 );
 
 	always_comb begin
