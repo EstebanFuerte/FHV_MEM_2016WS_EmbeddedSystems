@@ -16,7 +16,7 @@ vlog tb_majority_vote.sv
 # (4) Init the simulation
 #	--> specific the toplevel module that we want to simulate
 vsim tb_majority_vote
-do wave_tb_majority_vote.tcl
+
 # read out all signals
 log -r *
 
@@ -25,3 +25,4 @@ run 1us
 
 # (6) Show the wave window
 view wave
+do wave_tb_majority_vote.tcl
