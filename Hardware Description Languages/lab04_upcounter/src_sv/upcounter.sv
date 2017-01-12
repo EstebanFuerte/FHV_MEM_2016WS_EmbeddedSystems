@@ -1,7 +1,7 @@
 module upcounter(
-	input 	logic		rst_n,
-	input 	logic 		clk50m,
-	input	logic		enable,
+	input 	logic			rst_n,
+	input 	logic			clk50m,
+	input		logic			enable,
 	output 	logic [7:0]	count
 );
 	

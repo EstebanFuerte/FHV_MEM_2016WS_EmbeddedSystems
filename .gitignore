@@ -16,3 +16,25 @@ Hardware Description Languages/lab02_7segmentDriver/sim_sv/work/_lib1_0.qpg
 *.qtl
 Hardware Description Languages/lab02_7segmentDriver/sim_sv/work/_info
 Hardware Description Languages/lab02_7segmentDriver/sim_sv/work/_vmake
+*.zip
+*.kpt
+*.hsd
+*.qmsg
+*.hif
+*.html
+*.txt
+*.ammdb
+*.bpm
+*.logdb
+Hardware Description Languages/lab02_7segmentDriver/src_sv/sevenseg.sv.bak
+Hardware Description Languages/50_FPGA/c5g_rev_B.pdf
+Hardware Description Languages/50_FPGA/cv_5v1.pdf
+Hardware Description Languages/lab04_upcounter/sim_sv/modelsim.ini
+Hardware Description Languages/lab04_upcounter/sim_sv/work/_info
+Hardware Description Languages/lab04_upcounter/sim_sv/work/_lib1_0.qpg
+Hardware Description Languages/lab04_upcounter/sim_sv/work/_vmake
+*.rpt
+*.cdb
+*.hdb
+Hardware Description Languages/lab04_upcounter/fpga/Toplevel_C5G_GPIO.sv.bak
+*.bak
