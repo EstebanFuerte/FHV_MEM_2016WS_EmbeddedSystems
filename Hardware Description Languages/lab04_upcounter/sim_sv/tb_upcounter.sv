@@ -37,7 +37,7 @@ module tb_upcounter();
 		rst_n = 1'b1;
 		
 		//count a few hundered times
-		for (int i=0; i<100; i++) begin
+		for (int i=0; i<257; i++) begin
 			@ (negedge clk50m);
 			enable= 1'b1;
 			@ (negedge clk50m);
