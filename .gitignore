@@ -38,3 +38,7 @@ Hardware Description Languages/lab04_upcounter/sim_sv/work/_vmake
 *.hdb
 Hardware Description Languages/lab04_upcounter/fpga/Toplevel_C5G_GPIO.sv.bak
 *.bak
+Hardware Description Languages/lab05_garage_door/sim_sv/work/_info
+Hardware Description Languages/lab05_garage_door/sim_sv/work/_vmake
+Hardware Description Languages/lab05_garage_door/sim_sv/modelsim.ini
+Hardware Description Languages/lab05_garage_door/sim_sv/work/_lib1_0.qpg
