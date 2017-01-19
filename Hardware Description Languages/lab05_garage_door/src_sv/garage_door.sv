@@ -35,7 +35,7 @@ end
 
 // ---- combinatorial part of the FSM ----
 always_comb begin
-	case (state) begin
+	case (state)
 	
 	OPEN : begin
 		//define outputs

@@ -1,4 +1,4 @@
-module tb_grage_door();
+module tb_garage_door();
 
 	// (1) DUT wiring
 	logic	rst_n;
@@ -14,7 +14,7 @@ module tb_grage_door();
 	logic	wl;
 	
 	// (2) Plug in the DUT
-	grage_door dut
+	garage_door dut
 	(
 		.*
 	);
@@ -38,9 +38,28 @@ module tb_grage_door();
 		top 	= 1'b0;
 		bottom 	= 1'b0;
 		lb 		= 1'b0;
+		
 		#99ns;
 		rst_n	= 1'b1;
 		
+		up 		= 1'b1;
+		#100ns;
+		top 	= 1'b1;
+		#100ns;
+		
+		up		= 1'b0;
+		#100ns
+		dn		= 1'b1;
+		#100ns
+		lb		= 1'b1;
+		#100ns
+		
+		dn		= 1'b1;
+		#100ns
+		bottom	= 1'b1;
+		
+		#100us
+		run_sim = 1'b0;		
 		
 	end
 
