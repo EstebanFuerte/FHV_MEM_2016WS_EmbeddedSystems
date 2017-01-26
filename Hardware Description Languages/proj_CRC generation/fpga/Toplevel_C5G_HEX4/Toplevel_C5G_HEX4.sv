@@ -54,7 +54,7 @@ module Toplevel_C5G_HEX4(
     // --- Map inputs ---
     assign rst_n = CPU_RESET_n;
     assign clk50m = CLOCK_50_B5B;
-    assign crc_start = KEY[0];
+    assign crc_start = ~KEY[0];
     
     // --- Map outputs ---
     assign LEDG[0] = crc_ok;
