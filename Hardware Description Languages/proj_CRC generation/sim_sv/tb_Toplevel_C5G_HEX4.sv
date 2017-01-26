@@ -48,7 +48,7 @@ module tb_Toplevel_C5G_HEX4();
         
         action = "init"; $display("%s", action);
         CPU_RESET_n = 1'b0;
-        KEY         = '0;
+        KEY         = '1;
         SW          = '0;
         // read correct memory content
         action = "load memory with correct data"; $display("%s", action);
@@ -62,9 +62,9 @@ module tb_Toplevel_C5G_HEX4();
         #1us;
         @(negedge CLOCK_50_B5B);
         action = "start crc with correct memory content"; $display("%s", action);
-        KEY[0] = 1'b1;
-        @(negedge CLOCK_50_B5B);
         KEY[0] = 1'b0;
+        @(negedge CLOCK_50_B5B);
+        KEY[0] = 1'b1;
         
         // wait for crc system to indicate that it's ready
         while(!LEDR[0]) begin
@@ -89,9 +89,9 @@ module tb_Toplevel_C5G_HEX4();
         #1us;
         @(negedge CLOCK_50_B5B);
         action = "start crc with single bit error memory"; $display("%s", action);
-        KEY[0] = 1'b1;
-        @(negedge CLOCK_50_B5B);
         KEY[0] = 1'b0;
+        @(negedge CLOCK_50_B5B);
+        KEY[0] = 1'b1;
         
         
         // wait for crc system to indicate that it's ready
@@ -118,9 +118,9 @@ module tb_Toplevel_C5G_HEX4();
         #1us;
         @(negedge CLOCK_50_B5B);
         action = "start crc with double bit error memory"; $display("%s", action);
-        KEY[0] = 1'b1;
-        @(negedge CLOCK_50_B5B);
         KEY[0] = 1'b0;
+        @(negedge CLOCK_50_B5B);
+        KEY[0] = 1'b1;
         
         // wait for crc system to indicate that it's ready
         while(!LEDR[0]) begin
