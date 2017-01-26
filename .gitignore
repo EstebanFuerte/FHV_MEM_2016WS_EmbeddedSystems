@@ -4,6 +4,7 @@
 Microcontroller/mem3_EmbeddedSys_Microcontroller_SGL_stst.lyx~
 /Microcontroller/sgl_data
 Wireless Networks/Project00_FindMeProfile/iprintf.zip
+<<<<<<< HEAD
 /Field busses
 /Wireless networks/01 Lecture Notes
 /Wireless networks/02 Materials and Links
@@ -19,3 +20,46 @@ Microcontroller/_MEM3-ES_Microcontroller.pdf
 Microcontroller/Microcontroller-Adds.pdf
 /Multicore systems
 /Hardware Description Languages/01 Lecture Notes
+=======
+Hardware Description Languages/lab01_majority_vote/sim_sv/work/_lib.qdb
+Hardware Description Languages/lab02_7segmentDriver/sim_sv/modelsim.ini
+Hardware Description Languages/lab01_majority_vote/sim_sv/work/_lib1_0.qdb
+Hardware Description Languages/lab01_majority_vote/sim_sv/work/_lib1_0.qpg
+Hardware Description Languages/lab01_majority_vote/sim_sv/work/_lib1_0.qtl
+Hardware Description Languages/lab01_majority_vote/sim_sv/work/_vmake
+*.wlf
+*.qdb
+Hardware Description Languages/lab02_7segmentDriver/sim_sv/work/_lib1_0.qpg
+*.qtl
+Hardware Description Languages/lab02_7segmentDriver/sim_sv/work/_info
+Hardware Description Languages/lab02_7segmentDriver/sim_sv/work/_vmake
+*.zip
+*.kpt
+*.hsd
+*.qmsg
+*.hif
+*.html
+*.txt
+*.ammdb
+*.bpm
+*.logdb
+Hardware Description Languages/lab02_7segmentDriver/src_sv/sevenseg.sv.bak
+Hardware Description Languages/50_FPGA/c5g_rev_B.pdf
+Hardware Description Languages/50_FPGA/cv_5v1.pdf
+Hardware Description Languages/lab04_upcounter/sim_sv/modelsim.ini
+Hardware Description Languages/lab04_upcounter/sim_sv/work/_info
+Hardware Description Languages/lab04_upcounter/sim_sv/work/_lib1_0.qpg
+Hardware Description Languages/lab04_upcounter/sim_sv/work/_vmake
+*.rpt
+*.cdb
+*.hdb
+Hardware Description Languages/lab04_upcounter/fpga/Toplevel_C5G_GPIO.sv.bak
+*.bak
+Hardware Description Languages/lab05_garage_door/sim_sv/work/_info
+Hardware Description Languages/lab05_garage_door/sim_sv/work/_vmake
+Hardware Description Languages/lab05_garage_door/sim_sv/modelsim.ini
+Hardware Description Languages/lab05_garage_door/sim_sv/work/_lib1_0.qpg
+Hardware Description Languages/proj_CRC generation/ilias/circuit-cellar-january-2010-crc.pdf
+Hardware Description Languages/proj_CRC generation/ilias/crc16_usb_8bitdata.sv
+Hardware Description Languages/proj_CRC generation/ilias/Project_CRC_generation_v00.pdf
+>>>>>>> origin/master

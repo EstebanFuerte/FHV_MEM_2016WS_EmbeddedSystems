@@ -1,0 +1,1 @@
+Warning (10268): Verilog HDL information at crc_system.sv(103): always construct contains both blocking and non-blocking assignments File: C:/Users/anm/Documents/FH Dornbirn/MEM_Embedded_Systems3/trunk/HDL/20_projects/CRC_generation/src_sv/crc_system.sv Line: 103

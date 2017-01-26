@@ -1,0 +1,17 @@
+Partition Merge Status : Successful - Fri Jan 13 18:41:49 2017
+Quartus Prime Version : 16.0.0 Build 211 04/27/2016 SJ Lite Edition
+Revision Name : Toplevel_C5G_GPIO
+Top-level Entity Name : Toplevel_C5G_GPIO
+Family : Cyclone V
+Logic utilization (in ALMs) : N/A
+Total registers : 151
+Total pins : 88
+Total virtual pins : 0
+Total block memory bits : 320
+Total DSP Blocks : 0
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 0
+Total DLLs : 0
