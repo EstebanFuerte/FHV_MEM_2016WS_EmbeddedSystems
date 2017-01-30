@@ -97,7 +97,7 @@ always_comb begin
 			end
 			else begin
 				cnt_en = 1'b0;
-				crc_en = 1'b0;
+				crc_en = 1'b1;
 				crc_rdy = 1'b0;
 				rst_counter = 1'b0;
 				next_state = FETCH_DATA;

@@ -53,3 +53,8 @@ Hardware Description Languages/exam_preparation/lab01_majority_vote/sim_sv/work/
 Hardware Description Languages/exam_preparation/lab04_counter/sim_sv/vish_stacktrace.vstf
 Hardware Description Languages/exam_preparation/lab04_counter/sim_sv/work/_info
 Hardware Description Languages/exam_preparation/lab04_counter/sim_sv/work/_vmake
+Hardware Description Languages/proj_CRC generation/sim_sv/vish_stacktrace.vstf
+Hardware Description Languages/proj_CRC generation/sim_sv/wave.do
+Hardware Description Languages/proj_CRC generation/sim_sv/work/_info
+Hardware Description Languages/proj_CRC generation/src_sv/crc_fsm.sv
+Hardware Description Languages/proj_CRC generation/sim_sv/work/_info
