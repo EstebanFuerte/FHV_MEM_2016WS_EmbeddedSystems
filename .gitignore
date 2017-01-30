@@ -45,3 +45,8 @@ Hardware Description Languages/lab05_garage_door/sim_sv/work/_lib1_0.qpg
 Hardware Description Languages/proj_CRC generation/ilias/circuit-cellar-january-2010-crc.pdf
 Hardware Description Languages/proj_CRC generation/ilias/crc16_usb_8bitdata.sv
 Hardware Description Languages/proj_CRC generation/ilias/Project_CRC_generation_v00.pdf
+Hardware Description Languages/exam_preparation/lab01_majority_vote/ilias_10_majority_vote/10_majority_vote/sim_sv/modelsim.ini
+*.ini
+Hardware Description Languages/exam_preparation/lab01_majority_vote/sim_sv/work/_info
+*.qpg
+Hardware Description Languages/exam_preparation/lab01_majority_vote/sim_sv/work/_vmake
