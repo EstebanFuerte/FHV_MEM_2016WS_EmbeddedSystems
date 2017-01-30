@@ -40,15 +40,13 @@ module tb_crc_fsm();
 		// Leave PowerOnReset
 		#99ns;
 		rst_n = 1'b1;
+				
+		#1us;
+		crc_start = 1'b0;
+		#100ns;
+		mem_addr_in = 10'b0000000101;
 		
 		#100ns;
-		//crc_en = 1'b1;
-		crc_start = 1'b1;
-		
-		#10ns;
-		crc_start = 1'b0;
-		
-		#100us;
 		crc_start = 1'b1;
 		
 		#200us;

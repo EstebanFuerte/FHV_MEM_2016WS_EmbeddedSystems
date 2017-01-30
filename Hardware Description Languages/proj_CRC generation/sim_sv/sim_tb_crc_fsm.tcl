@@ -23,4 +23,4 @@ run -all
 
 # (6) Show the wave window
 view wave
-#do wave_tb_edgedect.tcl
+do wave_tb_crc_fsm.tcl
