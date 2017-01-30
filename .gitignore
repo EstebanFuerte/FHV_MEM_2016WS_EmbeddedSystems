@@ -50,3 +50,6 @@ Hardware Description Languages/exam_preparation/lab01_majority_vote/ilias_10_maj
 Hardware Description Languages/exam_preparation/lab01_majority_vote/sim_sv/work/_info
 *.qpg
 Hardware Description Languages/exam_preparation/lab01_majority_vote/sim_sv/work/_vmake
+Hardware Description Languages/exam_preparation/lab04_counter/sim_sv/vish_stacktrace.vstf
+Hardware Description Languages/exam_preparation/lab04_counter/sim_sv/work/_info
+Hardware Description Languages/exam_preparation/lab04_counter/sim_sv/work/_vmake
