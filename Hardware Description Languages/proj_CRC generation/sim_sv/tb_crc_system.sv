@@ -32,7 +32,7 @@ module tb_crc_system();
 	initial begin: stimuli
 		rst_n 			= 1'b0;
 		crc_start 		= 1'b0;
-		mem_data 		= 8'b0;
+		mem_data 		= 8'hac;
 		crc_out_target 	= 16'd32043;
 		mem_addr		= 10'b0;
 		crc_rdy			= 1'b0;
