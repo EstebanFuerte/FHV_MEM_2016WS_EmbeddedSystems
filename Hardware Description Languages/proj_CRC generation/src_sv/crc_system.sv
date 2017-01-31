@@ -49,16 +49,9 @@ module crc_system(
 	crc16_usb_8bitdata u1_crc16_usb_8bitdata(
 		.rst_n			(rst_n),
 		.clk 			(clk50m),
+		.crc_start		(crc_start),
 		.data_in		(mem_data),
 		.crc_en			(crc_en_sig),
 		.crc_out		(crc_out_sig)
 	);
-	
-    // ---- dummy outputs ----
-    //assign mem_addr = '0;
-    //assign crc_rdy = 1'b1;
-    //assign crc_ok = 1'b0;
-    //assign crc_out = '0;
-    
-    // ---- TODO: Create your own code here -----
 endmodule
