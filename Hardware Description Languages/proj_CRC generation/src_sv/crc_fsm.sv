@@ -70,7 +70,7 @@ always_comb begin
 			// define outputs
 			crc_en = 1'b0;
 			crc_rdy = 1'b0;
-			cnt_en = 1'b0;
+			cnt_en = 1'b1;
 			rst_counter = 1'b0;
 			// define transistions (next_state)
 			next_state = WAIT;
@@ -97,7 +97,7 @@ always_comb begin
 				next_state = DONE;
 			end
 			else begin
-				cnt_en = 1'b1;
+				cnt_en = 1'b0;
 				next_state = FETCH_DATA;
 			end
 		end
