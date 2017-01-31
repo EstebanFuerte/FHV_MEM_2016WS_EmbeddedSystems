@@ -5,7 +5,7 @@ module tb_crc_fsm();
 	logic	clk50m;
 	
 	logic			crc_start;		// starts crc calculation
-	logic	[9:0]	mem_addr_in;	// actual adress of memory
+	//logic	[9:0]	mem_addr_in;	// actual adress of memory
 	
 	logic	[9:0]	mem_addr_out;	// next adress of memory
 	logic 			crc_en;			// enables the crc_calc
@@ -32,7 +32,7 @@ module tb_crc_fsm();
 	initial begin: stimuli
 		rst_n = 1'b0;
 		crc_start = 1'b0;
-		mem_addr_in = 10'b0;
+		//mem_addr_in = 10'b0;
 		mem_addr_out = 10'b0;
 		crc_en = 1'b0;
 		crc_rdy = 1'b0;
@@ -40,14 +40,16 @@ module tb_crc_fsm();
 		// Leave PowerOnReset
 		#99ns;
 		rst_n = 1'b1;
-				
-		#1us;
-		crc_start = 1'b0;
-		#100ns;
-		mem_addr_in = 10'b0000000101;
 		
 		#100ns;
 		crc_start = 1'b1;
+		#40ns;
+		crc_start = 1'b0;
+		
+		#80us
+		crc_start = 1'b1;
+		#40ns;
+		crc_start = 1'b0;		
 		
 		#200us;
 		run_sim = 1'b0;
