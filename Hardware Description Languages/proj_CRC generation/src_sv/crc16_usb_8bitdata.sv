@@ -16,6 +16,7 @@ module crc16_usb_8bitdata(
   input         clk,
   input [7:0]   data_in,
   input         crc_en,
+  input			crc_start,
   output [15:0] crc_out
   );
 
@@ -44,7 +45,7 @@ module crc16_usb_8bitdata(
   end // always
 
   always_ff @(negedge rst_n or posedge clk) begin
-    if(!rst_n) begin
+    if(!rst_n || crc_start) begin
       lfsr_q <= {16{1'b1}};
     end
     else begin
