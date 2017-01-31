@@ -105,7 +105,7 @@ always_comb begin
 		DONE : begin
 			// define outputs
 			crc_en = 1'b0;
-			crc_rdy = 1'b0;
+			crc_rdy = 1'b1;
 			cnt_en = 1'b0;
 			rst_counter = 1'b1;
 			// define transistions (next_state)
