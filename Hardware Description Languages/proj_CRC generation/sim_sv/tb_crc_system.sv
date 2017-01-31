@@ -1,19 +1,19 @@
-module tb_crc_fsm();
+module tb_crc_system();
 
 	// (1)	DUT wiring
-	logic	rst_n;
-	logic	clk50m;
-	
-	logic			crc_start;		// starts crc calculation
-	//logic	[9:0]	mem_addr_in;	// actual adress of memory
-	
-	logic	[9:0]	mem_addr_out;	// next adress of memory
-	logic 			crc_en;			// enables the crc_calc
-	logic			crc_rdy;		// if the whole memory is read
+	logic         	rst_n;
+	logic    		clk50m;
+	logic        	crc_start;
+	logic [7:0]  	mem_data;
+	logic [15:0] 	crc_out_target;
+	logic [9:0]   	mem_addr;
+	logic         	crc_rdy;
+	logic         	crc_ok;
+	logic [15:0]  	crc_out;	
 
 	
 	// (2) Plug in the DUT
-	crc_fsm dut
+	crc_system dut
 	(
 		.*
 	);
@@ -30,12 +30,14 @@ module tb_crc_fsm();
 	end
 	
 	initial begin: stimuli
-		rst_n = 1'b0;
-		crc_start = 1'b0;
-		//mem_addr_in = 10'b0;
-		mem_addr_out = 10'b0;
-		crc_en = 1'b0;
-		crc_rdy = 1'b0;
+		rst_n 			= 1'b0;
+		crc_start 		= 1'b0;
+		mem_data 		= 8'b0;
+		crc_out_target 	= 16'd32043;
+		mem_addr		= 10'b0;
+		crc_rdy			= 1'b0;
+		crc_ok			= 1'b0;
+		crc_out			= 16'b0;
 		
 		// Leave PowerOnReset
 		#99ns;
