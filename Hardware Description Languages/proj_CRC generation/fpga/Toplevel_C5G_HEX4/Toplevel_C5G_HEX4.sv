@@ -44,6 +44,7 @@ module Toplevel_C5G_HEX4(
     logic [7:0]                     mem_data;
     logic [15:0]                    crc_out;
     logic [15:0]                    crc_out_target;
+	logic							pushed; //wire between edge_detect and crc_system
 
     
 
@@ -54,7 +55,7 @@ module Toplevel_C5G_HEX4(
     // --- Map inputs ---
     assign rst_n = CPU_RESET_n;
     assign clk50m = CLOCK_50_B5B;
-    assign crc_start = ~KEY[0];
+    assign crc_start = KEY[0];
     
     // --- Map outputs ---
     assign LEDG[0] = crc_ok;
@@ -73,18 +74,27 @@ module Toplevel_C5G_HEX4(
     crc_hash_data u1_crc_hash_data(
         .result                     (crc_out_target)
     );
+	
+	// ---- Edge detection for Key0 ---------------
+	edgedetect u1_edgedetect(
+		.rst_n						(rst_n),
+        .clk50m						(clk50m),
+		.in 						(crc_start),
+		.risingedge					(),
+		.fallingedge				(pushed)
+	);
     
     // ---- CRC system that controls the check ----
     crc_system  u1_crc_system(
-        .rst_n,
-        .clk50m,
-        .crc_start,
-        .mem_data,
-        .crc_out_target,
-        .mem_addr,
-        .crc_rdy,
-        .crc_ok,
-        .crc_out
+        .rst_n						(rst_n),
+        .clk50m						(clk50m),
+        .crc_start					(pushed),
+        .mem_data					(mem_data),
+        .crc_out_target				(crc_out_target),
+        .mem_addr					(mem_addr),
+        .crc_rdy					(crc_rdy),
+        .crc_ok						(crc_ok),
+        .crc_out					(crc_out)
     );
     
     sevenseg    u0_sevenseg(

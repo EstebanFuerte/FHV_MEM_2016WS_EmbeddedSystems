@@ -93,6 +93,8 @@ module tb_Toplevel_C5G_HEX4();
         @(negedge CLOCK_50_B5B);
         KEY[0] = 1'b1;
         
+		//ugly fix - to be sure that signals are stable
+		#100ns
         
         // wait for crc system to indicate that it's ready
         while(!LEDR[0]) begin
@@ -122,6 +124,9 @@ module tb_Toplevel_C5G_HEX4();
         @(negedge CLOCK_50_B5B);
         KEY[0] = 1'b1;
         
+		//ugly fix - to be sure that signals are stable
+		#100ns
+		
         // wait for crc system to indicate that it's ready
         while(!LEDR[0]) begin
             @ (negedge CLOCK_50_B5B);
