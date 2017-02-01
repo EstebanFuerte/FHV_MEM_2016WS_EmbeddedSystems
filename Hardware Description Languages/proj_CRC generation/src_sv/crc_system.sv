@@ -40,6 +40,7 @@ module crc_system(
 		.rst_n			(rst_n),
 		.clk50m			(clk50m),
 		.crc_rdy		(crc_rdy_sig),
+		.crc_start		(crc_start),
 		.crc_hash		(crc_out_target),
 		.crc_calc		(crc_out_sig),
 		.crc_ok			(crc_ok)

@@ -113,7 +113,7 @@ always_comb begin
 				next_state = FETCH_DATA;
 			end
 			else begin
-				next_state = IDLE;
+				next_state = DONE;
 			end
 		end
 		
