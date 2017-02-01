@@ -45,9 +45,12 @@ module crc16_usb_8bitdata(
   end // always
 
   always_ff @(negedge rst_n or posedge clk) begin
-    if(!rst_n || crc_start) begin
+    if(!rst_n) begin
       lfsr_q <= {16{1'b1}};
     end
+	 else if(crc_start) begin
+		lfsr_q <= {16{1'b1}};
+	 end
     else begin
       lfsr_q <= crc_en ? lfsr_c : lfsr_q;
     end

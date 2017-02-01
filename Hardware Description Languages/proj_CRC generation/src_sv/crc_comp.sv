@@ -16,9 +16,12 @@ module crc_comp(
 
 
 always_ff @ (negedge rst_n or posedge clk50m) begin
-	if (!rst_n || crc_start) begin
+	if (!rst_n) begin
 		crc_ok = 1'b0;
 	end	
+	else if (crc_start) begin
+		crc_ok = 1'b0;
+	end
 	else if (crc_rdy) begin
 		if(crc_hash == crc_calc) begin
 			crc_ok = 1'b1;
