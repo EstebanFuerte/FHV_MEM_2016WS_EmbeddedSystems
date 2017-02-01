@@ -26,10 +26,14 @@ enum logic [2:0] {IDLE, FETCH_DATA, WAIT, PROCESS_CRC, DONE} state, next_state;
 
 // ----- counter to increase adress ----
 always_ff @ (negedge rst_n or posedge clk50m) begin
-	if (!rst_n || rst_counter) begin
+	if (!rst_n) begin
 		cnt = 10'b0;
 		mem_addr_out = 10'b0;
-	end	
+	end
+	else if (rst_counter) begin
+		cnt = 10'b0;
+		mem_addr_out = 10'b0;	
+	end
 	else if (cnt_en) begin
 		cnt = cnt +10'b1;
 		mem_addr_out = cnt;
@@ -113,7 +117,7 @@ always_comb begin
 				next_state = FETCH_DATA;
 			end
 			else begin
-				next_state = IDLE;
+				next_state = DONE;
 			end
 		end
 		

@@ -6,7 +6,11 @@ vlog ../fpga/Toplevel_C5G_HEX4/ip/rom_data8bit_addr10bit.v
 vlog ../fpga/Toplevel_C5G_HEX4/ip/crc_hash_data.v
 vlog ../fpga/Toplevel_C5G_HEX4/Toplevel_C5G_HEX4.sv
 
+vlog ../src_sv/crc_fsm.sv
+vlog ../src_sv/crc_system.sv
+vlog ../src_sv/crc_comp.sv
 vlog ../src_sv/crc16_usb_8bitdata.sv
+vlog ../src_sv/edgedetect.sv
 
 vlog ../src_sv/crc_system.sv
 vlog ../src_sv/sevenseg.sv

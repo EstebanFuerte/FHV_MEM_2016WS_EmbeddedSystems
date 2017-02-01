@@ -26,7 +26,7 @@ module crc_system(
 	assign			crc_out = crc_out_sig;
 
 	// include crc fsm
-	crc_fsm u1_crc_fsm(
+	crc_fsm 					u1_crc_fsm(
 		.rst_n			(rst_n),
 		.clk50m			(clk50m),
 		.crc_start		(crc_start),
@@ -36,17 +36,18 @@ module crc_system(
 	);
 
 	// include crc compare
-	crc_comp u1_crc_comp(
+	crc_comp 				u1_crc_comp(
 		.rst_n			(rst_n),
 		.clk50m			(clk50m),
 		.crc_rdy		(crc_rdy_sig),
+		.crc_start		(crc_start),
 		.crc_hash		(crc_out_target),
 		.crc_calc		(crc_out_sig),
 		.crc_ok			(crc_ok)
 	);
 
 	// include crc16_usb_8bitdata
-	crc16_usb_8bitdata u1_crc16_usb_8bitdata(
+	crc16_usb_8bitdata 	u1_crc16_usb_8bitdata(
 		.rst_n			(rst_n),
 		.clk 			(clk50m),
 		.crc_start		(crc_start),
@@ -54,4 +55,7 @@ module crc_system(
 		.crc_en			(crc_en_sig),
 		.crc_out		(crc_out_sig)
 	);
+
+
+	
 endmodule
