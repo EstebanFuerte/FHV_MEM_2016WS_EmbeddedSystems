@@ -53,7 +53,7 @@ module tb_Toplevel_C5G_HEX4();
         // read correct memory content
         action = "load memory with correct data"; $display("%s", action);
         $readmemh("rom_data8bit_addr10bit.txt", tb_Toplevel_C5G_HEX4.dut.u1_rom_data8bit_addr10bit.altsyncram_component.m_default.altsyncram_inst.mem_data);
-        assign tb_Toplevel_C5G_HEX4.dut.u1_crc_hash_data.LPM_CONSTANT_component.int_value = 16'h38c6;
+        assign tb_Toplevel_C5G_HEX4.dut.u1_crc_hash_data.LPM_CONSTANT_component.int_value = 16'hbd38;
         
         #99ns;
         action = "por"; $display("%s", action);
@@ -65,7 +65,6 @@ module tb_Toplevel_C5G_HEX4();
         KEY[0] = 1'b0;
         @(negedge CLOCK_50_B5B);
         KEY[0] = 1'b1;
-        #100ns;
         
         // wait for crc system to indicate that it's ready
         while(!LEDR[0]) begin
@@ -93,7 +92,9 @@ module tb_Toplevel_C5G_HEX4();
         KEY[0] = 1'b0;
         @(negedge CLOCK_50_B5B);
         KEY[0] = 1'b1;
-        #100ns;
+        
+		//ugly fix - to be sure that signals are stable
+		#100ns
         
         // wait for crc system to indicate that it's ready
         while(!LEDR[0]) begin
@@ -119,11 +120,13 @@ module tb_Toplevel_C5G_HEX4();
         #1us;
         @(negedge CLOCK_50_B5B);
         action = "start crc with double bit error memory"; $display("%s", action);
-        KEY[0] = 1'b1;
-        @(negedge CLOCK_50_B5B);
         KEY[0] = 1'b0;
-        #100ns;
+        @(negedge CLOCK_50_B5B);
+        KEY[0] = 1'b1;
         
+		//ugly fix - to be sure that signals are stable
+		#100ns
+		
         // wait for crc system to indicate that it's ready
         while(!LEDR[0]) begin
             @ (negedge CLOCK_50_B5B);

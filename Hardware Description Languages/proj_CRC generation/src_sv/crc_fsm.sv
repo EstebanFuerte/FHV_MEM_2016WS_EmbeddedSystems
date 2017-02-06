@@ -74,7 +74,7 @@ always_comb begin
 			// define outputs
 			crc_en = 1'b0;
 			crc_rdy = 1'b0;
-			cnt_en = 1'b1;
+			cnt_en = 1'b0;
 			rst_counter = 1'b0;
 			// define transistions (next_state)
 			next_state = WAIT;
@@ -88,7 +88,6 @@ always_comb begin
 			rst_counter = 1'b0;
 			// define transistions (next_state)
 			next_state = PROCESS_CRC;
-			
 		end
 			
 		PROCESS_CRC : begin
@@ -97,11 +96,11 @@ always_comb begin
 			rst_counter = 1'b0;
 		
 			if (cnt >= 10'd1023) begin
-				cnt_en = 1'b0;
+				cnt_en = 1'b1;
 				next_state = DONE;
 			end
 			else begin
-				cnt_en = 1'b0;
+				cnt_en = 1'b1;
 				next_state = FETCH_DATA;
 			end
 		end
